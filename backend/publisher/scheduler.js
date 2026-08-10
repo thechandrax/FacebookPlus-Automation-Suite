@@ -1,0 +1,121 @@
+const cron = require('node-cron');
+const { collectNewsForPage } = require('../scrapers/aggregator');
+const { generateFacebookCaption } = require('../services/ai_generator');
+const { generatePostBanner } = require('../services/banner_generator');
+const { publishToFacebook } = require('./fb_publisher');
+const { addPost, updatePost, getPages } = require('../storage/posts_store');
+
+let isRunning = {};   // { page1: false, page2: false, page3: false }
+let cronTasks = [];
+
+/**
+ * Run automation cycle for a single page
+ */
+async function runAutomationCycle(options = {}) {
+  const pageId = options.pageId || 'page3';
+  if (isRunning[pageId]) {
+    console.log(`[Scheduler] Cycle for ${pageId} already running — skipping.`);
+    return { status: 'busy', pageId };
+  }
+
+  isRunning[pageId] = true;
+  console.log(`[Scheduler] Starting automation cycle for page: ${pageId}`);
+
+  try {
+    const pages = getPages();
+    const page = pages.find(p => p.id === pageId) || {};
+    const aiStyle   = page.aiStyle   || 'news';
+    const language  = page.language  || 'bengali_english_mixed';
+    const autoPost  = options.forceAutoPost !== undefined ? options.forceAutoPost : (page.autoPost === true);
+
+    // 1. Scrape news for this page
+    const newItems = await collectNewsForPage(pageId);
+    const itemsToProcess = newItems.slice(0, 3);
+    const createdPosts = [];
+
+    for (const item of itemsToProcess) {
+      console.log(`[Scheduler][${pageId}] Processing: "${item.title}"`);
+
+      // 2. Generate AI caption in the correct style for this page
+      const caption = await generateFacebookCaption(item, language, null, null, aiStyle);
+
+      // 3. Generate banner image
+      const dateStr = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+      const bannerUrl = await generatePostBanner(
+        item.title,
+        item.category || page.name || 'NEWS',
+        dateStr, null, item.imageUrl, item.link
+      );
+
+      // 4. Save post with pageId
+      const post = addPost({
+        pageId,
+        title: item.title,
+        link: item.link,
+        sourceName: item.sourceName,
+        category: item.category,
+        snippet: item.snippet,
+        imageUrl: item.imageUrl,
+        generatedCaption: caption,
+        bannerUrl,
+        status: autoPost ? 'approved' : 'pending'
+      });
+
+      // 5. Auto-publish if enabled for this page
+      if (autoPost) {
+        console.log(`[Scheduler][${pageId}] Auto-publishing post ${post.id}...`);
+        const pubResult = await publishToFacebook(post, { baseUrl: options.baseUrl || 'http://localhost:3000' });
+        if (pubResult.success) {
+          updatePost(post.id, {
+            status: 'published',
+            publishedAt: pubResult.publishedAt,
+            facebookPostId: pubResult.facebookPostId,
+            simulation: pubResult.simulation || false
+          });
+        } else {
+          updatePost(post.id, { status: 'failed', error: pubResult.error });
+        }
+      }
+      createdPosts.push(post);
+    }
+
+    console.log(`[Scheduler][${pageId}] Cycle complete — ${createdPosts.length} posts created.`);
+    isRunning[pageId] = false;
+    return { status: 'success', pageId, count: createdPosts.length, posts: createdPosts };
+  } catch (err) {
+    console.error(`[Scheduler Error][${pageId}]`, err.message);
+    isRunning[pageId] = false;
+    return { status: 'error', pageId, error: err.message };
+  }
+}
+
+/**
+ * Start cron jobs for ALL active pages using each page's own schedule
+ */
+function startCronScheduler(baseUrl = 'http://localhost:3000') {
+  stopCronScheduler();
+  const pages = getPages();
+
+  pages.forEach(page => {
+    if (!page.active) return;
+    const times = page.cronSchedule ? page.cronSchedule.split(',') : ['0 8 * * *'];
+    times.forEach(expr => {
+      const trimmed = expr.trim();
+      if (cron.validate(trimmed)) {
+        console.log(`[Scheduler] Registered cron "${trimmed}" for page: ${page.emoji} ${page.name}`);
+        const task = cron.schedule(trimmed, () => {
+          console.log(`[Cron Triggered] ${page.emoji} ${page.name} — ${trimmed}`);
+          runAutomationCycle({ pageId: page.id, baseUrl });
+        });
+        cronTasks.push(task);
+      }
+    });
+  });
+}
+
+function stopCronScheduler() {
+  cronTasks.forEach(t => t.stop());
+  cronTasks = [];
+}
+
+module.exports = { runAutomationCycle, startCronScheduler, stopCronScheduler };

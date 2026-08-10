@@ -1,0 +1,682 @@
+[
+  {
+    "id": "abp-ananda-bn",
+    "name": "ABP Ananda (Bangla News & Media)",
+    "type": "rss",
+    "url": "https://bengali.abplive.com/home/feed",
+    "category": "General WB News",
+    "language": "bengali",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "sangbad-pratidin-bn",
+    "name": "Sangbad Pratidin (Bangla News)",
+    "type": "rss",
+    "url": "https://www.sangbadpratidin.in/feed/",
+    "category": "General WB News",
+    "language": "bengali",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "google-kolkata-bn",
+    "name": "Google News (Kolkata Bangla)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Kolkata+West+Bengal+News&hl=bn&gl=IN&ceid=IN:bn",
+    "category": "Bangla News",
+    "language": "bengali",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "indian-express-wb",
+    "name": "Indian Express (Kolkata & WB)",
+    "type": "rss",
+    "url": "https://indianexpress.com/section/cities/kolkata/feed/",
+    "category": "State News",
+    "language": "english",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "toi-kolkata",
+    "name": "Times of India (Kolkata)",
+    "type": "rss",
+    "url": "https://timesofindia.indiatimes.com/rssfeeds/-2128833038.cms",
+    "category": "Kolkata News",
+    "language": "english",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "google-wb-news",
+    "name": "Google News (West Bengal Headlines)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=West+Bengal&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "General WB News",
+    "language": "english",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "bikash-bhavan-edu",
+    "name": "Bikash Bhavan (WB Higher Education)",
+    "type": "web",
+    "url": "https://wbhed.gov.in/",
+    "category": "Education & Exams",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "cm-nabanna-press",
+    "name": "CM Office & Nabanna Press Release",
+    "type": "web",
+    "url": "https://egiyebangla.gov.in/",
+    "category": "Politics & Governance",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "wbbse-board",
+    "name": "WBBSE (Madhyamik Board)",
+    "type": "web",
+    "url": "https://wbbse.wb.gov.in/",
+    "category": "Education & Exams",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "wbchse-council",
+    "name": "WBCHSE (Higher Secondary Council)",
+    "type": "web",
+    "url": "https://wbchse.wb.gov.in/",
+    "category": "Education & Exams",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "wbpsc-exam",
+    "name": "WBPSC (Public Service Commission)",
+    "type": "web",
+    "url": "https://psc.wb.gov.in/",
+    "category": "Education & Exams",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "wbssc-teacher",
+    "name": "WBSSC (School Service Commission)",
+    "type": "web",
+    "url": "http://www.westbengalssc.com/",
+    "category": "Education & Exams",
+    "language": "govt_portal",
+    "active": true,
+    "pageId": "page3"
+  },
+  {
+    "id": "bollywood-hungama",
+    "pageId": "page1",
+    "name": "Bollywood Hungama",
+    "type": "rss",
+    "url": "https://www.bollywoodhungama.com/rss/news.xml",
+    "category": "Movies & Entertainment",
+    "language": "hindi_english_mixed",
+    "active": true
+  },
+  {
+    "id": "filmibeat",
+    "pageId": "page1",
+    "name": "FilmiBeat Entertainment",
+    "type": "rss",
+    "url": "https://www.filmibeat.com/rss.xml",
+    "category": "Movies & Entertainment",
+    "language": "hindi_english_mixed",
+    "active": true
+  },
+  {
+    "id": "toi-entertainment",
+    "pageId": "page1",
+    "name": "Times of India Entertainment",
+    "type": "rss",
+    "url": "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
+    "category": "Movies & Entertainment",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "pinkvilla",
+    "pageId": "page1",
+    "name": "Pinkvilla Celebrity News",
+    "type": "rss",
+    "url": "https://www.pinkvilla.com/feed",
+    "category": "Celebrity & Gossip",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-tollywood",
+    "pageId": "page1",
+    "name": "Google News (Tollywood)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Tollywood+Bengali+movie+release&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Bengali Cinema",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-bollywood",
+    "pageId": "page1",
+    "name": "Google News (Bollywood)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Bollywood+new+movie+box+office&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Movies & Entertainment",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-ott",
+    "pageId": "page1",
+    "name": "Google News (OTT Releases)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=OTT+Netflix+Amazon+Prime+Hotstar+new+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT & Web Series",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-bengali-movie",
+    "pageId": "page1",
+    "name": "Google News (Bengali Cinema)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+2025&hl=bn&gl=IN&ceid=IN:bn",
+    "category": "Bengali Cinema",
+    "language": "bengali",
+    "active": true
+  },
+  {
+    "id": "moneycontrol-markets",
+    "pageId": "page2",
+    "name": "Moneycontrol Markets",
+    "type": "rss",
+    "url": "https://www.moneycontrol.com/rss/marketreports.xml",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "et-markets",
+    "pageId": "page2",
+    "name": "Economic Times Markets",
+    "type": "rss",
+    "url": "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "business-standard",
+    "pageId": "page2",
+    "name": "Business Standard Markets",
+    "type": "rss",
+    "url": "https://www.business-standard.com/rss/markets-106.rss",
+    "category": "Business & Finance",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "livemint-markets",
+    "pageId": "page2",
+    "name": "LiveMint Markets",
+    "type": "rss",
+    "url": "https://www.livemint.com/rss/markets",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-nse-bse",
+    "pageId": "page2",
+    "name": "Google News (NSE/BSE/Nifty)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=NSE+BSE+Sensex+Nifty+stock+market+today&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-crypto-india",
+    "pageId": "page2",
+    "name": "Google News (Crypto India)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Bitcoin+crypto+India+market+price+today&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Crypto & Blockchain",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "google-ipo",
+    "pageId": "page2",
+    "name": "Google News (IPO Alerts)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=IPO+India+2025+GMP+allotment&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "IPO & Listings",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-movie-release-today",
+    "pageId": "page1",
+    "name": "Daily Movie Releases (India)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=new+movie+release+today+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Daily Movie Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-bollywood-release",
+    "pageId": "page1",
+    "name": "Bollywood Release This Week",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Bollywood+movie+release+this+week+box+office+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Daily Movie Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-tollywood-release",
+    "pageId": "page1",
+    "name": "Tollywood / Bengali Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Bengali+Tollywood+new+movie+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Bengali Cinema Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-hindi-film-release",
+    "pageId": "page1",
+    "name": "Hindi Film Release & Trailer",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Hindi+film+release+date+trailer+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Bollywood Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-south-film-release",
+    "pageId": "page1",
+    "name": "South Indian Film Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=South+Indian+Hindi+dubbed+movie+release+today+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "South Indian Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-netflix-india",
+    "pageId": "page1",
+    "name": "Netflix India – New Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Netflix+India+new+release+today+this+week&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-prime-video-india",
+    "pageId": "page1",
+    "name": "Amazon Prime Video India Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Amazon+Prime+Video+India+new+release+today+web+series&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-hotstar-release",
+    "pageId": "page1",
+    "name": "Disney+ Hotstar New Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Disney+Plus+Hotstar+new+release+today+India&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-jiocinema-release",
+    "pageId": "page1",
+    "name": "JioCinema New Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=JioCinema+new+release+today+web+series+movie&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-zee5-release",
+    "pageId": "page1",
+    "name": "ZEE5 New Release Today",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=ZEE5+new+release+today+movie+web+series&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-sonyliv-release",
+    "pageId": "page1",
+    "name": "SonyLIV New Release",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=SonyLIV+new+release+today+web+series+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-ott-weekly",
+    "pageId": "page1",
+    "name": "OTT Releases This Week (All)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=OTT+releases+this+week+India+Netflix+Prime+Hotstar+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Release",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-box-office-today",
+    "pageId": "page1",
+    "name": "Box Office Collection Today",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=box+office+collection+today+India+crore&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Box Office",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-movie-review",
+    "pageId": "page1",
+    "name": "Movie Reviews & Ratings",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=movie+review+rating+India+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Movie Reviews",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "cnbctv18-market",
+    "pageId": "page2",
+    "name": "CNBC TV18 Markets",
+    "type": "rss",
+    "url": "https://www.cnbctv18.com/commonfeeds/v1/eng/rss/market.xml",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "zee-business",
+    "pageId": "page2",
+    "name": "Zee Business News",
+    "type": "rss",
+    "url": "https://www.zeebiz.com/feeds/market-news.xml",
+    "category": "Business & Finance",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "financial-express-mkt",
+    "pageId": "page2",
+    "name": "Financial Express Markets",
+    "type": "rss",
+    "url": "https://www.financialexpress.com/market/feed/",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "ndtv-profit",
+    "pageId": "page2",
+    "name": "NDTV Profit Markets",
+    "type": "rss",
+    "url": "https://feeds.feedburner.com/ndtvprofit-latest",
+    "category": "Business & Finance",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-share-market-today",
+    "pageId": "page2",
+    "name": "Google News – Share Market Today",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=share+market+today+India+Sensex+Nifty&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-rbi-news",
+    "pageId": "page2",
+    "name": "Google News – RBI & Interest Rate",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=RBI+repo+rate+monetary+policy+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Economy & RBI",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-mutual-fund",
+    "pageId": "page2",
+    "name": "Google News – Mutual Fund & SIP",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=mutual+fund+SIP+returns+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Mutual Funds & SIP",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-sebi-news",
+    "pageId": "page2",
+    "name": "Google News – SEBI Regulations",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=SEBI+regulation+investor+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Economy & RBI",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-india-budget",
+    "pageId": "page2",
+    "name": "Google News – India Budget & Tax",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=India+budget+tax+income+GST+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Economy & RBI",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-company-result",
+    "pageId": "page2",
+    "name": "Google News – Company Results",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=quarterly+results+earnings+profit+loss+India+company+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Company Results",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-gold-silver",
+    "pageId": "page2",
+    "name": "Google News – Gold & Silver Price",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=gold+silver+price+today+India+MCX+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Commodities",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-fintech-india",
+    "pageId": "page2",
+    "name": "Google News – Fintech & UPI India",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=fintech+UPI+Zerodha+Groww+PhonePe+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Fintech & UPI",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-forex-rupee",
+    "pageId": "page2",
+    "name": "Google News – Rupee & Forex",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Indian+rupee+dollar+forex+exchange+rate+today&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Economy & RBI",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-real-estate-india",
+    "pageId": "page2",
+    "name": "Google News – Real Estate India",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=real+estate+property+price+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Real Estate",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-startup-funding",
+    "pageId": "page2",
+    "name": "Google News – Startup Funding",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=India+startup+funding+investment+unicorn+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Startup & Investment",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gnews-crude-oil",
+    "pageId": "page2",
+    "name": "Google News – Crude Oil & Energy",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=crude+oil+price+today+India+energy+sector+2025&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Commodities",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "justwatch-ott-india",
+    "pageId": "page1",
+    "name": "JustWatch (India OTT Streaming Releases)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=JustWatch+India+OTT+streaming&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "moviebase-ott-tracker",
+    "pageId": "page1",
+    "name": "Moviebase / MobiBASE (OTT & Movie Tracker)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=movie+web+series+tracker+release+date+India&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "ottplay-daily-guide",
+    "pageId": "page1",
+    "name": "OTTPlay (Daily OTT & Web Series Guide)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=OTTPlay+OTT+release+this+week+today&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "binged-ott-guide",
+    "pageId": "page1",
+    "name": "Binged (India OTT Release Dates & Reviews)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Binged+OTT+release+today+this+week&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "gadgets360-ott-watch",
+    "pageId": "page1",
+    "name": "Gadgets360 OTT & Web Series Watch",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Gadgets360+OTT+release+Netflix+Prime+Hotstar&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "daily-ott-master-watch",
+    "pageId": "page1",
+    "name": "Daily OTT Releases (Netflix/Prime/Hotstar/JioCinema/Zee5)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=OTT+release+today+Netflix+Amazon+Prime+Disney+Hotstar+JioCinema+Zee5&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Releases",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "series-graph-tvmaze",
+    "pageId": "page1",
+    "name": "SeriesGraph & TVmaze (Episode Ratings & Web Series Graphs)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=web+series+episode+rating+chart+graph&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Series Ratings & Graphs",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "imdb-top-ott-ratings",
+    "pageId": "page1",
+    "name": "IMDb Ratings & Top OTT Popularity Charts",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=web+series+ratings+reviews+IMDb&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Ratings & Reviews",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "tmdb-series-tracker",
+    "pageId": "page1",
+    "name": "TMDb (The Movie Database Ratings & Trending Series)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=OTT+release+this+week+ratings+reviews&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Ratings & Reviews",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "rotten-tomatoes-ott",
+    "pageId": "page1",
+    "name": "Rotten Tomatoes (Critic & Audience Ratings for OTT)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Rotten+Tomatoes+rating+score+movie+series&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Ratings & Reviews",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "flixpatrol-top10-india",
+    "pageId": "page1",
+    "name": "FlixPatrol (Netflix, Prime & Hotstar Daily Top 10 Charts India)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Netflix+Prime+Hotstar+Top+10+India+today&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "OTT Rankings & Charts",
+    "language": "english",
+    "active": true
+  }
+]

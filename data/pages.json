@@ -1,0 +1,50 @@
+[
+  {
+    "id": "page1",
+    "name": "Movies & Entertainment",
+    "emoji": "🎬",
+    "description": "Bollywood, Tollywood, OTT & Celebrity News",
+    "category": "entertainment",
+    "theme": "purple",
+    "fbPageId": "",
+    "fbPageToken": "",
+    "language": "bengali_english_mixed",
+    "aiStyle": "entertainment",
+    "imageType": "ai_image",
+    "autoPost": false,
+    "cronSchedule": "0 10 * * *,0 15 * * *,0 20 * * *",
+    "active": true
+  },
+  {
+    "id": "page2",
+    "name": "Trading & Stock Market",
+    "emoji": "📈",
+    "description": "NSE, BSE, Sensex, Nifty, Crypto & Economy",
+    "category": "finance",
+    "theme": "green",
+    "fbPageId": "",
+    "fbPageToken": "",
+    "language": "english",
+    "aiStyle": "finance",
+    "imageType": "ai_image",
+    "autoPost": false,
+    "cronSchedule": "0 9 * * *,0 12 * * *,0 16 * * *",
+    "active": true
+  },
+  {
+    "id": "page3",
+    "name": "General News & Education",
+    "emoji": "📰",
+    "description": "West Bengal News, Govt Jobs, WBBSE, WBPSC, Education",
+    "category": "news",
+    "theme": "blue",
+    "fbPageId": "",
+    "fbPageToken": "",
+    "language": "bengali_english_mixed",
+    "aiStyle": "news",
+    "imageType": "ai_image",
+    "autoPost": false,
+    "cronSchedule": "0 8 * * *,0 13 * * *,0 19 * * *",
+    "active": true
+  }
+]

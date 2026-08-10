@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multi-Page FB Studio — Autonomous Content & Automation Suite</title>
+  <meta name="description" content="Next-gen AI Content Studio & Facebook Automation Suite for Movies, Trading, and West Bengal News."/>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="page-page3">
+
+<!-- Dynamic Ambient Glow Aura -->
+<div class="ambient-glow glow-1"></div>
+<div class="ambient-glow glow-2"></div>
+
+<!-- ═══════════════════════ TOP SWITCHER BAR ═══════════════════════ -->
+<header class="page-switcher">
+  <div class="page-switcher-brand">
+    <div class="brand-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">STUDIO<span class="brand-accent">+</span></span>
+      <span class="brand-tag">FB AUTOMATION</span>
+    </div>
+  </div>
+
+  <div class="page-tabs">
+    <div class="page-tab" id="tab-page1" onclick="switchPage('page1')">
+      <span class="tab-emoji">🎬</span>
+      <span class="tab-label">Movies &amp; Entertainment</span>
+      <span class="tab-count" id="count-page1">0</span>
+    </div>
+    <div class="page-tab" id="tab-page2" onclick="switchPage('page2')">
+      <span class="tab-emoji">📈</span>
+      <span class="tab-label">Trading &amp; Stock Market</span>
+      <span class="tab-count" id="count-page2">0</span>
+    </div>
+    <div class="page-tab active" id="tab-page3" onclick="switchPage('page3')">
+      <span class="tab-emoji">📰</span>
+      <span class="tab-label">General News &amp; Education</span>
+      <span class="tab-count" id="count-page3">0</span>
+    </div>
+  </div>
+
+  <div class="switcher-actions">
+    <div class="theme-select-wrap">
+      <span class="theme-icon">🎨</span>
+      <select id="themeSelector" class="theme-select" onchange="switchTheme(this.value)">
+        <option value="pearl">☀️ Pearl Light Studio</option>
+        <option value="snow">🌸 Snow White Minimal</option>
+        <option value="cyberpunk">⚡ Cyberpunk Neon</option>
+        <option value="obsidian">👑 Obsidian Gold</option>
+        <option value="oled">🌙 Midnight OLED</option>
+        <option value="matrix">🌲 Emerald Matrix</option>
+        <option value="aurora">🌌 Aurora Sapphire</option>
+      </select>
+    </div>
+    <div class="status-pill">
+      <div class="status-dot" id="globalStatusDot"></div>
+      <span id="globalStatusText">Engine Active</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════ APP SHELL ═══════════════════════ -->
+<div class="app-shell">
+
+  <!-- SIDEBAR NAVIGATION -->
+  <nav class="sidebar">
+    <div class="nav-group">
+      <div class="nav-section-title">NAVIGATION</div>
+      <div class="nav-item active" id="nav-posts" onclick="showView('posts')">
+        <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+        <span>Content Queue</span>
+      </div>
+      <div class="nav-item" id="nav-sources" onclick="showView('sources')">
+        <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9m-9-15a14 14 0 0 1 14 14M5 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+        <span>Live Sources</span>
+      </div>
+      <div class="nav-item" id="nav-settings" onclick="showView('settings')">
+        <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Studio Config</span>
+      </div>
+    </div>
+
+    <!-- SIDEBAR FOOTER PAGE CARD -->
+    <div class="sidebar-footer" id="sidebarPageInfo">
+      <div class="sidebar-page-header">
+        <span class="sidebar-page-title" id="sidebarPageName">📰 WB News</span>
+        <span class="sidebar-auto-badge" id="sidebarAutoStatus">Auto-Off</span>
+      </div>
+      <div class="sidebar-page-desc" id="sidebarPageCategory">WB News & Education</div>
+      <div class="sidebar-status-pulse">
+        <span class="pulse-ring"></span>
+        <span class="pulse-text">Cron Schedule Active</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+
+    <!-- ════════════ POSTS VIEW ════════════ -->
+    <div class="view active" id="view-posts">
+      <div class="page-header">
+        <div class="page-header-left">
+          <div class="header-badge-row">
+            <span class="page-header-badge" id="postsPageBadge">PAGE CHANNEL</span>
+          </div>
+          <h1 id="postsPageTitle">Content Queue</h1>
+          <p id="postsPageDesc" class="header-desc">Loading channel telemetry...</p>
+        </div>
+        <div class="header-actions">
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="postSearchInput" name="post_search_query_nocache" autocomplete="off" placeholder="Search posts..." oninput="handleSearchPosts(this.value)"/>
+          </div>
+          <button class="btn-scrape" id="btnScrapeNow" onclick="handleScrapeNow()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+            <span>Run Pipeline Now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STAT CARDS METRICS GRID -->
+      <div class="stats-grid" id="statsGrid">
+        <!-- JS Populated -->
+      </div>
+
+      <!-- CATEGORY & STATUS FILTER PILLS -->
+      <div class="filter-bar-container">
+        <div class="filter-bar" id="filterBar">
+          <!-- JS Populated -->
+        </div>
+      </div>
+
+      <!-- POSTS CARD GRID -->
+      <div class="posts-grid" id="postsGrid">
+        <div class="empty-state">
+          <div class="empty-icon-spin">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Loading Content Feed...</h3>
+          <p>Connecting to local database &amp; automation engine.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════ SOURCES VIEW ════════════ -->
+    <div class="view" id="view-sources">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Information Feeds &amp; Portals</h1>
+          <p id="sourcesPageDesc">Manage active RSS streams, web portals, and scrapers</p>
+        </div>
+        <button class="btn btn-primary" onclick="openAddSourceModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>Add New Source</span>
+        </button>
+      </div>
+
+      <div class="filter-bar-container" style="margin-bottom:20px">
+        <div class="filter-bar" id="sourceFilterBar">
+          <button class="filter-btn active" onclick="filterSources('all', this)">All Sources</button>
+          <button class="filter-btn" onclick="filterSources('rss', this)">RSS Feeds</button>
+          <button class="filter-btn" onclick="filterSources('web', this)">Web &amp; PDF Portals</button>
+        </div>
+      </div>
+
+      <div class="sources-grid" id="sourcesList"><!-- JS Populated --></div>
+    </div>
+
+    <!-- ════════════ SETTINGS VIEW ════════════ -->
+    <div class="view" id="view-settings">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Studio Configuration</h1>
+          <p>Facebook API credentials, Groq/Gemini key pools, and cron schedules</p>
+        </div>
+      </div>
+
+      <!-- FACEBOOK PAGES CONFIG -->
+      <div class="settings-section">
+        <div class="section-title-row">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--active-primary)" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <h3>Facebook Pages &amp; Automation Targets</h3>
+        </div>
+        <div class="page-config-cards" id="pageConfigCards"><!-- JS Populated --></div>
+      </div>
+
+      <!-- GLOBAL AI & PROVIDERS -->
+      <div class="settings-section">
+        <div class="section-title-row">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--active-primary)" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.1 12a10 10 0 0 1 17.8-7.9l-7.9 7.9z"/></svg>
+          <h3>AI Engine &amp; Model Credentials</h3>
+        </div>
+        <form id="globalSettingsForm" onsubmit="handleSaveGlobalSettings(event)" class="glass-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Groq API Key (Primary Llama 3.3 70B)</label>
+              <input type="password" id="cfgGroqKey" class="form-input" placeholder="gsk_..."/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Gemini API Key (Fallback)</label>
+              <input type="password" id="cfgGeminiKey" class="form-input" placeholder="AIza..."/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Hugging Face API Key (Optional AI Images)</label>
+              <input type="password" id="cfgHfKey" class="form-input" placeholder="hf_..."/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Default AI Provider Engine</label>
+              <select id="cfgDefaultAiProvider" class="form-select">
+                <option value="groq">Groq (Llama-3.3-70b-versatile)</option>
+                <option value="gemini">Gemini 1.5 Flash</option>
+                <option value="auto">Auto Failover (Groq → Gemini → Smart Template)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary">💾 Save API Configuration</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═════════════════ ADD SOURCE MODAL ═════════════════ -->
+<div class="modal-overlay" id="modalAddSource" style="display:none">
+  <div class="modal glass-modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--active-primary)" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9m-9-15a14 14 0 0 1 14 14M5 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+        <span>Add Information Stream</span>
+      </div>
+      <button class="modal-close" onclick="closeModal('modalAddSource')">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="addSourceForm" onsubmit="handleAddSource(event)">
+        <div class="form-group">
+          <label class="form-label">Source Display Name</label>
+          <input type="text" id="srcName" class="form-input" placeholder="e.g. Times of India Entertainment" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Source Type</label>
+            <select id="srcType" class="form-select">
+              <option value="rss">RSS Feed Stream</option>
+              <option value="web">Government / Web Scraper</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category Label</label>
+            <input type="text" id="srcCategory" class="form-input" placeholder="e.g. Movies &amp; Entertainment"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Target RSS Feed or Portal URL</label>
+          <input type="url" id="srcUrl" class="form-input" placeholder="https://..." required/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modalAddSource')">Cancel</button>
+          <button type="submit" class="btn btn-primary">➕ Register Source</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════ EDIT SOURCE MODAL ═════════════════ -->
+<div class="modal-overlay" id="modalEditSource" style="display:none">
+  <div class="modal glass-modal" style="max-width:520px">
+    <div class="modal-header">
+      <div class="modal-title">✏️ Edit Information Source</div>
+      <button class="modal-close" onclick="closeModal('modalEditSource')">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="editSourceForm" onsubmit="handleSaveEditSource(event)">
+        <input type="hidden" id="editSrcId"/>
+        <div class="form-group">
+          <label class="form-label">Source Name</label>
+          <input type="text" id="editSrcName" class="form-input" required/>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <input type="text" id="editSrcCategory" class="form-input" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Language</label>
+            <select id="editSrcLanguage" class="form-select">
+              <option value="english">English</option>
+              <option value="bengali">Bengali (বাংলা)</option>
+              <option value="hindi_english_mixed">Hindi / English</option>
+              <option value="govt_portal">Govt Portal</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">RSS / Feed URL</label>
+          <input type="url" id="editSrcUrl" class="form-input" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Stream Status</label>
+          <select id="editSrcActive" class="form-select">
+            <option value="true">🟢 Active (ON)</option>
+            <option value="false">🔴 Inactive (OFF)</option>
+          </select>
+        </div>
+        <div class="modal-footer" style="padding:0;margin-top:16px;justify-content:space-between">
+          <button type="button" class="btn btn-secondary" style="color:#dc2626;border-color:#fca5a5" onclick="deleteSourceFromModal()">🗑️ Delete Source</button>
+          <div style="display:flex;gap:8px">
+            <button type="button" class="btn btn-secondary" onclick="closeModal('modalEditSource')">Cancel</button>
+            <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════ VIEW SOURCE ARTICLES MODAL ═════════════════ -->
+<div class="modal-overlay" id="modalSourceArticles" style="display:none">
+  <div class="modal glass-modal" style="max-width:720px;max-height:85vh;display:flex;flex-direction:column">
+    <div class="modal-header">
+      <div class="modal-title" id="srcArticlesTitle">👁️ Source Feed Articles</div>
+      <button class="modal-close" onclick="closeModal('modalSourceArticles')">✕</button>
+    </div>
+    <div class="modal-body" id="srcArticlesBody" style="overflow-y:auto;flex:1;padding:20px">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════ PAGE SETTINGS MODAL ═════════════════ -->
+<div class="modal-overlay" id="modalPageSettings" style="display:none">
+  <div class="modal glass-modal" style="max-width:540px">
+    <div class="modal-header">
+      <div class="modal-title" id="pageSettingsTitle">Channel Configuration</div>
+      <button class="modal-close" onclick="closeModal('modalPageSettings')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editingPageId"/>
+      
+      <div class="form-group">
+        <label class="form-label">Facebook Page ID</label>
+        <input type="text" id="psPageId" class="form-input" placeholder="e.g. 1278417762019367"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Facebook Page Access Token</label>
+        <input type="password" id="psPageToken" class="form-input" placeholder="EAAWpp..."/>
+      </div>
+
+      <div class="fb-connect-box">
+        <div class="fb-connect-header">
+          <span>⚡ Auto-Connect via User Access Token</span>
+        </div>
+        <div class="fb-connect-body">
+          <input type="text" id="psUserToken" class="form-input" placeholder="Paste Facebook User Token to auto-fetch Page ID & Token"/>
+          <button type="button" class="btn btn-secondary btn-sm" style="width:100%;margin-top:8px" onclick="handleAutoConnectFbPage()">Fetch &amp; Connect Page Token</button>
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:14px">
+        <div class="form-group">
+          <label class="form-label">AI Caption Style Persona</label>
+          <select id="psAiStyle" class="form-select">
+            <option value="entertainment">🎬 Entertainment (Viral / Box Office)</option>
+            <option value="finance">📈 Finance (Market Insight / Investor)</option>
+            <option value="news">📰 News (Bengali-English Mixed)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Output Language</label>
+          <select id="psLanguage" class="form-select">
+            <option value="bengali_english_mixed">Bengali-English Mixed</option>
+            <option value="english">English Only</option>
+            <option value="bengali">Bengali Only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Automation Cron Schedules (Comma Separated)</label>
+        <input type="text" id="psCronSchedule" class="form-input" placeholder="0 8 * * *,0 13 * * *,0 19 * * *"/>
+        <span class="form-hint">Standard cron expression: e.g. 0 8 * * * runs daily at 8:00 AM</span>
+      </div>
+
+      <div class="toggle-card">
+        <div class="toggle-text">
+          <span class="toggle-title">Automated Direct Publishing</span>
+          <span class="toggle-desc">Automatically post top scraped content to Facebook page without manual review</span>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="psAutoPost"/>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalPageSettings')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePageSettings()">💾 Save Page Config</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════ AI WORKSHOP SIDE-BY-SIDE MODAL ═════════════════ -->
+<div class="modal-overlay" id="modalAiEnhance" style="display:none">
+  <div class="enh-modal glass-modal" style="max-width: 1080px; width: 96%; max-height: 94vh;">
+    <div class="enh-header">
+      <div class="modal-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--active-primary)" stroke-width="2.2"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2z"/></svg>
+        <span>✨ AI Workshop &amp; Side-by-Side Content Studio</span>
+      </div>
+      <button class="modal-close" onclick="closeModal('modalAiEnhance')">✕</button>
+    </div>
+
+    <div class="modal-body" style="padding: 20px;">
+      <input type="hidden" id="enhPostId"/>
+      <input type="file" id="enhPhotoFileInput" accept="image/*" style="display:none;" onchange="handleEnhPhotoUpload(event)"/>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        
+        <!-- LEFT PANEL: Original Article Source -->
+        <div style="background: #ffffff; border: 1.5px solid var(--active-primary); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 20px var(--active-glow);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-weight: 800; font-size: 11px; color: #64748b; text-transform: uppercase;">📄 SOURCE ARTICLE:</span>
+              <span id="enhSourceBadge" class="badge" style="background: var(--active-primary); color: #ffffff; font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 700;">News Source</span>
+            </div>
+            <a id="enhOriginalLink" href="#" target="_blank" style="background: #f1f5f9; color: var(--active-primary); border: 1px solid #cbd5e1; font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-decoration: none;">Original Link ↗</a>
+          </div>
+
+          <h4 id="enhOriginalTitle" style="font-size: 15px; font-weight: 700; color: #0f172a; line-height: 1.4; margin: 0; min-height: 42px;">-</h4>
+
+          <div>
+            <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">ORIGINAL SUMMARY / FULL TEXT:</label>
+            <div id="enhOriginalSnippet" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; font-size: 12px; height: 160px; overflow-y: auto; color: #334155; line-height: 1.5;">-</div>
+          </div>
+
+          <div>
+            <img id="enhOriginalImg" src="" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 1px solid #e2e8f0;" alt="Original Photo" onerror="this.style.display='none'"/>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: AI Enhanced Workshop -->
+        <div style="background: #ffffff; border: 1.5px solid var(--active-primary); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 20px var(--active-glow);">
+          
+          <!-- Actions Toolbar -->
+          <div style="display: flex; justify-content: flex-end; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleAiRewriteCaption()" id="btnRewriteCaption">🔄 Rewrite</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleRegenerateAiPhoto()" id="btnRegenPhoto">🖼️ AI Photo</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleGenerateSeriesGraphChart()" id="btnSeriesGraphChart">📊 SeriesGraph</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="triggerAddPhoto()">📷 Add Photo</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="togglePromptInputs()">💬 Prompts</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="removeAllEnhPhotos()" style="color:#ef4444">🗑️ Remove</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="saveEnhAndClose()" id="btnEnhSave">💾 Save &amp; Apply</button>
+          </div>
+
+          <!-- Prompt Customization Collapsible Inputs -->
+          <div id="promptInputsArea" style="display:none; background:#f8fafc; padding:10px; border-radius:10px; border:1px solid #e2e8f0;">
+            <label class="form-label" style="font-size:11px">Custom Caption Prompt Steering</label>
+            <input type="text" id="enhCustomCaption" class="form-input" style="font-size:12px;margin-bottom:8px" placeholder="e.g. Make it viral with 3 emojis..."/>
+            <label class="form-label" style="font-size:11px">Custom AI Image Prompt</label>
+            <input type="text" id="enhCustomImage" class="form-input" style="font-size:12px" placeholder="e.g. Kolkata news photo 4k realistic..."/>
+            <button type="button" class="btn btn-primary btn-sm" style="width:100%;margin-top:8px" onclick="handleCustomGenerate()">✨ Generate With Prompts</button>
+          </div>
+
+          <div>
+            <label style="font-size: 11px; color: var(--active-primary); font-weight: 700; display: block; margin-bottom: 4px;">✨ REWRITTEN AI CAPTION:</label>
+            <textarea id="enhCaption" class="enh-caption-area" style="height: 160px; font-size: 12px; line-height: 1.5; color: #0f172a; padding: 10px;" placeholder="AI caption will render here..."></textarea>
+          </div>
+
+          <!-- Multi-Photo Gallery Grid (Up to 5 Photos) -->
+          <div>
+            <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">ATTACHED GALLERY PHOTOS (MAX 5):</label>
+            <div id="enhPhotosGallery" style="min-height: 200px; max-height: 200px; overflow-y: auto;">
+              <!-- JS Populated Gallery Grid -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast" class="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
