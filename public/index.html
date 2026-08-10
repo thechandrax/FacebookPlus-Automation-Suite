@@ -461,13 +461,13 @@
         <!-- RIGHT PANEL: AI Enhanced Workshop -->
         <div style="background: #ffffff; border: 1.5px solid var(--active-primary); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 20px var(--active-glow);">
           
-          <!-- Actions Toolbar -->
-          <div style="display: flex; justify-content: flex-end; align-items: center; gap: 6px; flex-wrap: wrap;">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="handleAiRewriteCaption()" id="btnRewriteCaption">🔄 Rewrite</button>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="handleRegenerateAiPhoto()" id="btnRegenPhoto">🖼️ AI Photo</button>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="triggerAddPhoto()">📷 Add Photo</button>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="openPromptDialog()">💬 Prompts</button>
-            <button type="button" class="btn btn-primary btn-sm" onclick="saveEnhAndClose()" id="btnEnhSave">💾 Save &amp; Apply</button>
+          <!-- Actions Toolbar (All 5 buttons on 1 single row) -->
+          <div style="display: flex; justify-content: flex-end; align-items: center; gap: 5px; flex-wrap: nowrap;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleAiRewriteCaption()" id="btnRewriteCaption" style="white-space: nowrap; padding: 6px 10px; font-size: 11.5px;">🔄 Rewrite</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleRegenerateAiPhoto()" id="btnRegenPhoto" style="white-space: nowrap; padding: 6px 10px; font-size: 11.5px;">🖼️ AI Photo</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="triggerAddPhoto()" style="white-space: nowrap; padding: 6px 10px; font-size: 11.5px;">📷 Add Photo</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openPromptDialog()" style="white-space: nowrap; padding: 6px 10px; font-size: 11.5px;">💬 Prompts</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="saveEnhAndClose()" id="btnEnhSave" style="white-space: nowrap; padding: 6px 12px; font-size: 11.5px;">💾 Save &amp; Apply</button>
           </div>
 
           <div>
