@@ -733,10 +733,13 @@ function renderSources() {
   const container = document.getElementById('sourcesList');
   if (!container) return;
 
-  let filtered = allSources;
+  let filtered = [...allSources];
   if (currentSrcFilter !== 'all') {
-    filtered = allSources.filter(s => s.type === currentSrcFilter);
+    filtered = filtered.filter(s => s.type === currentSrcFilter);
   }
+
+  // Sort pinned sources to the TOP!
+  filtered.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
 
   if (!filtered.length) {
     container.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><h3>No sources configured.</h3></div>`;
@@ -744,12 +747,13 @@ function renderSources() {
   }
 
   container.innerHTML = filtered.map(s => `
-    <div class="source-card" id="src-card-${s.id}">
+    <div class="source-card" id="src-card-${s.id}" style="${s.pinned ? 'border:1.5px solid #f59e0b;background:#fffdfa;box-shadow:0 4px 16px rgba(245,158,11,0.15);' : ''}">
       <div>
         <div class="source-header" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <span class="source-title" style="font-weight:700;font-size:14px;color:#0f172a;line-height:1.3">${escHtml(s.name)}</span>
             <span class="source-type-tag" style="font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:#f1f5f9;color:#475569;white-space:nowrap">${escHtml(s.type || 'rss')}</span>
+            ${s.pinned ? `<span style="font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;background:#fef3c7;color:#b45309;border:1px solid #fde68a;white-space:nowrap">📌 PINNED</span>` : ''}
           </div>
 
           <!-- TOP RIGHT GREEN ON/OFF TOGGLE SWITCH -->
@@ -768,8 +772,9 @@ function renderSources() {
       <div class="source-toolbar" style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid #f1f5f9;margin-top:auto">
         <span style="font-size:11px;color:#334155;font-weight:600">📁 ${escHtml(s.category || 'General')}</span>
 
-        <!-- Action Buttons: VIEW, EDIT, DELETE -->
+        <!-- Action Buttons: PIN, VIEW, EDIT, DELETE -->
         <div style="display:flex;gap:4px;align-items:center">
+          <button class="btn btn-xs" onclick="toggleSourcePin('${s.id}')" title="${s.pinned ? 'Unpin Source' : 'Pin Source to Top'}" style="padding:4px 8px;font-size:11px;border-radius:6px;font-weight:800;${s.pinned ? 'background:#fef3c7;color:#b45309;border:1.5px solid #f59e0b;' : 'background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;'}">${s.pinned ? '📌 Pinned' : '📌 Pin'}</button>
           <button class="btn btn-secondary btn-xs" onclick="openSourceArticlesModal('${s.id}')" title="View Articles from this Source" style="padding:4px 8px;font-size:11px;border-radius:6px;font-weight:700">👁️ View</button>
           <button class="btn btn-secondary btn-xs" onclick="openEditSourceModal('${s.id}')" title="Edit Source" style="padding:4px 8px;font-size:11px;border-radius:6px;font-weight:700">✏️ Edit</button>
           <button class="btn btn-danger btn-xs" onclick="deleteSource('${s.id}')" title="Delete Source" style="padding:4px 8px;font-size:11px;border-radius:6px;font-weight:700;background:#fee2e2;color:#dc2626;border:1px solid #fca5a5">🗑️ Delete</button>
@@ -777,6 +782,28 @@ function renderSources() {
       </div>
     </div>
   `).join('');
+}
+
+async function toggleSourcePin(id) {
+  const src = allSources.find(s => s.id === id);
+  if (!src) return;
+
+  const newPinnedState = !src.pinned;
+  try {
+    const res = await fetch(`/api/sources/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pinned: newPinnedState })
+    });
+    const data = await res.json();
+    if (data.success) {
+      src.pinned = newPinnedState;
+      showToast(newPinnedState ? '📌 Source Pinned to Top!' : '📌 Source Unpinned');
+      renderSources();
+    }
+  } catch (e) {
+    showToast('❌ Failed to update pin status');
+  }
 }
 
 async function toggleSourceActive(id, active) {

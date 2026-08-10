@@ -284,11 +284,11 @@ app.post('/api/sources', (req, res) => {
 });
 
 app.put('/api/sources/:id', (req, res) => {
-  const { name, url, category, language, active } = req.body;
+  const { name, url, category, language, active, pinned } = req.body;
   const all = getSources();
   const idx = all.findIndex(s => s.id === req.params.id);
   if (idx === -1) return res.status(404).json({ success: false, error: 'Source not found' });
-  all[idx] = { ...all[idx], ...(name !== undefined && { name }), ...(url !== undefined && { url }), ...(category !== undefined && { category }), ...(language !== undefined && { language }), ...(active !== undefined && { active }) };
+  all[idx] = { ...all[idx], ...(name !== undefined && { name }), ...(url !== undefined && { url }), ...(category !== undefined && { category }), ...(language !== undefined && { language }), ...(active !== undefined && { active }), ...(pinned !== undefined && { pinned }) };
   saveSources(all);
   res.json({ success: true, source: all[idx] });
 });
