@@ -594,30 +594,86 @@ async function handleAiRewriteCaption() {
   }
 }
 
-async function handleCustomGenerate() {
-  const postId    = document.getElementById('enhPostId').value;
-  const capPrompt = document.getElementById('enhCustomCaption').value;
-  const imgPrompt = document.getElementById('enhCustomImage').value;
+function openPromptDialog() {
+  const modal = document.getElementById('promptDialogModal');
+  if (modal) modal.style.display = 'flex';
+}
 
-  showToast('✨ Generating with custom prompts...');
+function closePromptDialog() {
+  const modal = document.getElementById('promptDialogModal');
+  if (modal) modal.style.display = 'none';
+}
+
+async function generateCaptionFromPromptDialog() {
+  const postId = document.getElementById('enhPostId').value;
+  const capPrompt = document.getElementById('promptDialogCaption').value.trim();
+
+  if (!capPrompt) {
+    showToast('⚠️ Please enter a custom caption prompt first!');
+    return;
+  }
+
+  const btn = document.getElementById('btnDialogGenCaption');
+  btn.disabled = true;
+  btn.textContent = '⌛ Generating Caption...';
+  showToast('✨ Generating caption with custom prompt...');
 
   try {
     const res = await fetch(`/api/posts/${postId}/custom-generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ customCaptionPrompt: capPrompt, customImagePrompt: imgPrompt })
+      body: JSON.stringify({ customCaptionPrompt: capPrompt })
     });
     const data = await res.json();
     if (data.success && data.post) {
       document.getElementById('enhCaption').value = data.post.generatedCaption;
-      if (data.post.bannerUrl) {
-        currentEnhPhotos.push(data.post.bannerUrl);
-        renderEnhPhotosGallery();
-      }
-      showToast('✨ Generated with custom prompts!');
+      showToast('✨ New Caption generated with custom prompt!');
     }
   } catch (e) {
-    showToast('❌ Generation failed.');
+    showToast('❌ Caption generation failed.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✨ Generate Caption';
+  }
+}
+
+async function generateImageFromPromptDialog() {
+  const postId = document.getElementById('enhPostId').value;
+  const imgPrompt = document.getElementById('promptDialogImage').value.trim();
+
+  if (!imgPrompt) {
+    showToast('⚠️ Please enter a custom image prompt first!');
+    return;
+  }
+
+  if (currentEnhPhotos.length >= 5) {
+    showToast('⚠️ Max 5 photos limit reached!');
+    return;
+  }
+
+  const btn = document.getElementById('btnDialogGenImage');
+  btn.disabled = true;
+  btn.textContent = '⌛ Generating AI Image...';
+  showToast('🖼️ Generating AI image with custom prompt...');
+
+  try {
+    const res = await fetch(`/api/posts/${postId}/custom-generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ customImagePrompt: imgPrompt })
+    });
+    const data = await res.json();
+    if (data.success && data.post && data.post.bannerUrl) {
+      currentEnhPhotos.push(data.post.bannerUrl);
+      renderEnhPhotosGallery();
+      showToast('🖼️ New AI Image generated with custom prompt!');
+      loadPosts();
+    }
+  } catch (e) {
+    showToast('❌ Image generation failed.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🖼️ Generate Image';
   }
 }
 

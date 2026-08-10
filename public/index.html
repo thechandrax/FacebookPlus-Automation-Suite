@@ -462,18 +462,9 @@
             <button type="button" class="btn btn-secondary btn-sm" onclick="handleAiRewriteCaption()" id="btnRewriteCaption">🔄 Rewrite</button>
             <button type="button" class="btn btn-secondary btn-sm" onclick="handleRegenerateAiPhoto()" id="btnRegenPhoto">🖼️ AI Photo</button>
             <button type="button" class="btn btn-secondary btn-sm" onclick="triggerAddPhoto()">📷 Add Photo</button>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="togglePromptInputs()">💬 Prompts</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openPromptDialog()">💬 Prompts</button>
             <button type="button" class="btn btn-secondary btn-sm" onclick="removeAllEnhPhotos()" style="color:#ef4444">🗑️ Remove</button>
             <button type="button" class="btn btn-primary btn-sm" onclick="saveEnhAndClose()" id="btnEnhSave">💾 Save &amp; Apply</button>
-          </div>
-
-          <!-- Prompt Customization Collapsible Inputs -->
-          <div id="promptInputsArea" style="display:none; background:#f8fafc; padding:10px; border-radius:10px; border:1px solid #e2e8f0;">
-            <label class="form-label" style="font-size:11px">Custom Caption Prompt Steering</label>
-            <input type="text" id="enhCustomCaption" class="form-input" style="font-size:12px;margin-bottom:8px" placeholder="e.g. Make it viral with 3 emojis..."/>
-            <label class="form-label" style="font-size:11px">Custom AI Image Prompt</label>
-            <input type="text" id="enhCustomImage" class="form-input" style="font-size:12px" placeholder="e.g. Kolkata news photo 4k realistic..."/>
-            <button type="button" class="btn btn-primary btn-sm" style="width:100%;margin-top:8px" onclick="handleCustomGenerate()">✨ Generate With Prompts</button>
           </div>
 
           <div>
@@ -492,6 +483,46 @@
 
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ════════════ PROMPT STUDIO DIALOGUE MODAL ════════════ -->
+<div class="modal-backdrop" id="promptDialogModal" style="display:none;">
+  <div class="modal-box" style="max-width: 520px; padding: 24px; border-radius: 20px; border: 1.5px solid var(--active-primary); box-shadow: 0 10px 40px var(--active-glow); background: #ffffff;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>💬</span> AI Prompt Studio
+      </h2>
+      <button type="button" class="modal-close-btn" onclick="closePromptDialog()">✕</button>
+    </div>
+
+    <!-- Caption Steering Section -->
+    <div style="margin-bottom: 20px; background: #f8fafc; padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
+      <label class="form-label" style="font-size: 12px; font-weight: 800; color: var(--active-primary); margin-bottom: 6px; display: block;">
+        ✨ Caption Custom Prompt Steering
+      </label>
+      <textarea id="promptDialogCaption" class="form-input" style="height: 75px; font-size: 13px; line-height: 1.4; resize: vertical; margin-bottom: 10px; font-family: inherit;" placeholder="e.g. Write a viral Bengali-English post with 3 key points, emojis, and hashtags..."></textarea>
+      <button type="button" class="btn btn-primary btn-sm" id="btnDialogGenCaption" onclick="generateCaptionFromPromptDialog()" style="width: 100%; padding: 10px; font-size: 13px; border-radius: 10px;">
+        ✨ Generate Caption
+      </button>
+    </div>
+
+    <!-- Image Prompt Section -->
+    <div style="margin-bottom: 20px; background: #f8fafc; padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
+      <label class="form-label" style="font-size: 12px; font-weight: 800; color: #0284c7; margin-bottom: 6px; display: block;">
+        🖼️ Image Custom Prompt Engineering
+      </label>
+      <textarea id="promptDialogImage" class="form-input" style="height: 75px; font-size: 13px; line-height: 1.4; resize: vertical; margin-bottom: 10px; font-family: inherit;" placeholder="e.g. Professional 4k studio photography of Indian movie premiere, realistic lighting, detailed..."></textarea>
+      <button type="button" class="btn btn-secondary btn-sm" id="btnDialogGenImage" onclick="generateImageFromPromptDialog()" style="width: 100%; padding: 10px; font-size: 13px; border-radius: 10px;">
+        🖼️ Generate Image
+      </button>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end;">
+      <button type="button" class="btn btn-secondary btn-sm" onclick="closePromptDialog()" style="padding: 8px 20px;">Close Studio</button>
+    </div>
+
   </div>
 </div>
 
