@@ -437,7 +437,7 @@ function renderEnhPhotosGallery() {
 
   if (!currentEnhPhotos || currentEnhPhotos.length === 0) {
     container.innerHTML = `
-      <div style="height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 10px; color: #94a3b8;">
+      <div style="height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 10px; color: #94a3b8;">
         <span style="font-size: 24px;">📷</span>
         <span style="font-size: 12px; font-weight: 600; margin-top: 4px;">No Attached Photos (Max 5)</span>
       </div>
@@ -447,8 +447,8 @@ function renderEnhPhotosGallery() {
 
   if (currentEnhPhotos.length === 1) {
     container.innerHTML = `
-      <div style="position: relative; width: 100%; height: 180px;">
-        <img src="${currentEnhPhotos[0]}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; border: 1.5px solid var(--active-primary);" alt="Photo 1">
+      <div style="position: relative; width: 100%; height: 200px;">
+        <img src="${currentEnhPhotos[0]}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 1.5px solid var(--active-primary);" alt="Photo 1">
         <button type="button" onclick="removeEnhPhotoAtIndex(0)" style="position: absolute; top: 6px; right: 6px; background: rgba(239,68,68,0.9); color: #fff; border: none; border-radius: 50%; width: 26px; height: 26px; font-size: 13px; font-weight: 800; cursor: pointer;">&times;</button>
         <span style="position: absolute; bottom: 6px; left: 6px; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">1 / 5 Photos</span>
       </div>
@@ -461,7 +461,7 @@ function renderEnhPhotosGallery() {
   container.style.gap = '8px';
 
   container.innerHTML = currentEnhPhotos.map((url, idx) => `
-    <div style="position: relative; width: 100%; height: ${currentEnhPhotos.length <= 2 ? '180px' : '90px'}; overflow: hidden; border-radius: 8px; border: 1.5px solid var(--active-primary);">
+    <div style="position: relative; width: 100%; height: ${currentEnhPhotos.length <= 2 ? '200px' : '95px'}; overflow: hidden; border-radius: 10px; border: 1.5px solid var(--active-primary);">
       <img src="${url}" style="width: 100%; height: 100%; object-fit: cover;" alt="Photo ${idx+1}">
       <button type="button" onclick="removeEnhPhotoAtIndex(${idx})" style="position: absolute; top: 4px; right: 4px; background: rgba(239,68,68,0.9); color: #fff; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; font-weight: 800; cursor: pointer;">&times;</button>
       <span style="position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,0.7); color: #fff; padding: 1px 6px; border-radius: 10px; font-size: 9.5px; font-weight: 700;">#${idx+1}</span>
