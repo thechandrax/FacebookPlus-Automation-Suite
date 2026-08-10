@@ -21,8 +21,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/generated_banners', express.static(path.join(__dirname, 'public/generated_banners')));
 
 // ═══════════════════════════════════════════════════════════
-//  PAGES API
+//  AUTH  (protects all /api routes with a shared secret key)
 // ═══════════════════════════════════════════════════════════
+// Set DASHBOARD_API_KEY in .env to enable. If it's unset, the API stays open
+// (fine for pure-localhost use) but a console warning is printed on boot.
+app.use('/api', (req, res, next) => {
+  const requiredKey = process.env.DASHBOARD_API_KEY;
+  if (!requiredKey) return next(); // no key configured -> auth disabled
+  const providedKey = req.get('x-api-key') || req.query.apiKey;
+  if (providedKey === requiredKey) return next();
+  res.status(401).json({ success: false, error: 'Unauthorized. Provide a valid x-api-key header.' });
+});
 
 // GET all pages
 app.get('/api/pages', (req, res) => {
@@ -368,6 +377,10 @@ app.post('/api/settings', (req, res) => {
 // ═══════════════════════════════════════════════════════════
 app.listen(PORT, () => {
   console.log(`===================================================`);
+  if (!process.env.DASHBOARD_API_KEY) {
+    console.log(`⚠️  DASHBOARD_API_KEY not set — /api routes are UNPROTECTED.`);
+    console.log(`   Set DASHBOARD_API_KEY in .env before exposing this server beyond localhost.`);
+  }
   console.log(`🟢 WB Multi-Page FB Studio running on port ${PORT}`);
   console.log(`🌐 Dashboard: http://localhost:${PORT}`);
   console.log(`🎬 Page 1: Movies & Entertainment`);

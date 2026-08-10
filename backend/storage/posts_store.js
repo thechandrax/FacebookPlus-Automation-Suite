@@ -43,8 +43,8 @@ const DEFAULT_SOURCES = [
   { id: 'pinkvilla', pageId: 'page1', name: 'Pinkvilla Celebrity News', type: 'rss', url: 'https://www.pinkvilla.com/feed', category: 'Celebrity & Gossip', language: 'english', active: true },
   { id: 'google-tollywood', pageId: 'page1', name: 'Google News (Tollywood)', type: 'rss', url: 'https://news.google.com/rss/search?q=Tollywood+Bengali+movie+release&hl=en-IN&gl=IN&ceid=IN:en', category: 'Movies & Entertainment', language: 'english', active: true },
   { id: 'google-bollywood', pageId: 'page1', name: 'Google News (Bollywood)', type: 'rss', url: 'https://news.google.com/rss/search?q=Bollywood+new+movie+box+office&hl=en-IN&gl=IN&ceid=IN:en', category: 'Movies & Entertainment', language: 'english', active: true },
-  { id: 'google-ott', pageId: 'page1', name: 'Google News (OTT Releases)', type: 'rss', url: 'https://news.google.com/rss/search?q=OTT+Netflix+Amazon+Prime+Hotstar+new+release+2025&hl=en-IN&gl=IN&ceid=IN:en', category: 'OTT & Web Series', language: 'english', active: true },
-  { id: 'google-bengali-movie', pageId: 'page1', name: 'Google News (Bengali Cinema)', type: 'rss', url: 'https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+2025&hl=bn&gl=IN&ceid=IN:bn', category: 'Bengali Cinema', language: 'bengali', active: true },
+  { id: 'google-ott', pageId: 'page1', name: 'Google News (OTT Releases)', type: 'rss', url: 'https://news.google.com/rss/search?q=OTT+Netflix+Amazon+Prime+Hotstar+new+release&hl=en-IN&gl=IN&ceid=IN:en', category: 'OTT & Web Series', language: 'english', active: true },
+  { id: 'google-bengali-movie', pageId: 'page1', name: 'Google News (Bengali Cinema)', type: 'rss', url: `https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+${new Date().getFullYear()}&hl=bn&gl=IN&ceid=IN:bn`, category: 'Bengali Cinema', language: 'bengali', active: true },
 
   // PAGE 2: Trading & Stock Market
   { id: 'moneycontrol-markets', pageId: 'page2', name: 'Moneycontrol Markets', type: 'rss', url: 'https://www.moneycontrol.com/rss/marketreports.xml', category: 'Stock Market', language: 'english', active: true },
@@ -53,7 +53,7 @@ const DEFAULT_SOURCES = [
   { id: 'livemint-markets', pageId: 'page2', name: 'LiveMint Markets', type: 'rss', url: 'https://www.livemint.com/rss/markets', category: 'Stock Market', language: 'english', active: true },
   { id: 'google-nse-bse', pageId: 'page2', name: 'Google News (NSE/BSE/Nifty)', type: 'rss', url: 'https://news.google.com/rss/search?q=NSE+BSE+Sensex+Nifty+stock+market+today&hl=en-IN&gl=IN&ceid=IN:en', category: 'Stock Market', language: 'english', active: true },
   { id: 'google-crypto-india', pageId: 'page2', name: 'Google News (Crypto India)', type: 'rss', url: 'https://news.google.com/rss/search?q=Bitcoin+crypto+India+market+price+today&hl=en-IN&gl=IN&ceid=IN:en', category: 'Crypto & Blockchain', language: 'english', active: true },
-  { id: 'google-ipo', pageId: 'page2', name: 'Google News (IPO Alerts)', type: 'rss', url: 'https://news.google.com/rss/search?q=IPO+India+2025+GMP+allotment&hl=en-IN&gl=IN&ceid=IN:en', category: 'IPO & Investment', language: 'english', active: true },
+  { id: 'google-ipo', pageId: 'page2', name: 'Google News (IPO Alerts)', type: 'rss', url: `https://news.google.com/rss/search?q=IPO+India+${new Date().getFullYear()}+GMP+allotment&hl=en-IN&gl=IN&ceid=IN:en`, category: 'IPO & Investment', language: 'english', active: true },
 
   // PAGE 3: General News & Education (existing sources)
   { id: 'abp-ananda-bn', pageId: 'page3', name: 'ABP Ananda (Bangla News)', type: 'rss', url: 'https://bengali.abplive.com/home/feed', category: 'General WB News', language: 'bengali', active: true },

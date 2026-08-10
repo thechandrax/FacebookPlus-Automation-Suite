@@ -184,7 +184,7 @@
     "pageId": "page1",
     "name": "Google News (OTT Releases)",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=OTT+Netflix+Amazon+Prime+Hotstar+new+release+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=OTT+Netflix+Amazon+Prime+Hotstar+new+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "OTT & Web Series",
     "language": "english",
     "active": true
@@ -194,7 +194,7 @@
     "pageId": "page1",
     "name": "Google News (Bengali Cinema)",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+2026&hl=bn&gl=IN&ceid=IN:bn",
+    "url": "https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+2025&hl=bn&gl=IN&ceid=IN:bn",
     "category": "Bengali Cinema",
     "language": "bengali",
     "active": true
@@ -264,7 +264,7 @@
     "pageId": "page2",
     "name": "Google News (IPO Alerts)",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=IPO+India+2026+GMP+allotment&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=IPO+India+2025+GMP+allotment&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "IPO & Listings",
     "language": "english",
     "active": true
@@ -274,7 +274,7 @@
     "pageId": "page1",
     "name": "Daily Movie Releases (India)",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=new+movie+release+today+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=new+movie+release+today+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Daily Movie Release",
     "language": "english",
     "active": true
@@ -284,7 +284,7 @@
     "pageId": "page1",
     "name": "Bollywood Release This Week",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=Bollywood+movie+release+this+week+box+office+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=Bollywood+movie+release+this+week+box+office+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Daily Movie Release",
     "language": "english",
     "active": true
@@ -294,7 +294,7 @@
     "pageId": "page1",
     "name": "Tollywood / Bengali Release",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=Bengali+Tollywood+new+movie+release+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=Bengali+Tollywood+new+movie+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Bengali Cinema Release",
     "language": "english",
     "active": true
@@ -304,7 +304,7 @@
     "pageId": "page1",
     "name": "Hindi Film Release & Trailer",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=Hindi+film+release+date+trailer+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=Hindi+film+release+date+trailer+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Bollywood Release",
     "language": "english",
     "active": true
@@ -314,7 +314,7 @@
     "pageId": "page1",
     "name": "South Indian Film Release",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=South+Indian+Hindi+dubbed+movie+release+today+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=South+Indian+Hindi+dubbed+movie+release+today+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "South Indian Release",
     "language": "english",
     "active": true
@@ -374,7 +374,7 @@
     "pageId": "page1",
     "name": "SonyLIV New Release",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=SonyLIV+new+release+today+web+series+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=SonyLIV+new+release+today+web+series+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "OTT Release",
     "language": "english",
     "active": true
@@ -384,7 +384,7 @@
     "pageId": "page1",
     "name": "OTT Releases This Week (All)",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=OTT+releases+this+week+India+Netflix+Prime+Hotstar+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=OTT+releases+this+week+India+Netflix+Prime+Hotstar+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "OTT Release",
     "language": "english",
     "active": true
@@ -404,7 +404,7 @@
     "pageId": "page1",
     "name": "Movie Reviews & Ratings",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=movie+review+rating+India+release+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=movie+review+rating+India+release+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Movie Reviews",
     "language": "english",
     "active": true
@@ -464,7 +464,7 @@
     "pageId": "page2",
     "name": "Google News – RBI & Interest Rate",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=RBI+repo+rate+monetary+policy+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=RBI+repo+rate+monetary+policy+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Economy & RBI",
     "language": "english",
     "active": true
@@ -474,7 +474,7 @@
     "pageId": "page2",
     "name": "Google News – Mutual Fund & SIP",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=mutual+fund+SIP+returns+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=mutual+fund+SIP+returns+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Mutual Funds & SIP",
     "language": "english",
     "active": true
@@ -484,7 +484,7 @@
     "pageId": "page2",
     "name": "Google News – SEBI Regulations",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=SEBI+regulation+investor+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=SEBI+regulation+investor+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Economy & RBI",
     "language": "english",
     "active": true
@@ -494,7 +494,7 @@
     "pageId": "page2",
     "name": "Google News – India Budget & Tax",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=India+budget+tax+income+GST+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=India+budget+tax+income+GST+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Economy & RBI",
     "language": "english",
     "active": true
@@ -504,7 +504,7 @@
     "pageId": "page2",
     "name": "Google News – Company Results",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=quarterly+results+earnings+profit+loss+India+company+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=quarterly+results+earnings+profit+loss+India+company+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Company Results",
     "language": "english",
     "active": true
@@ -514,7 +514,7 @@
     "pageId": "page2",
     "name": "Google News – Gold & Silver Price",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=gold+silver+price+today+India+MCX+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=gold+silver+price+today+India+MCX+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Commodities",
     "language": "english",
     "active": true
@@ -524,7 +524,7 @@
     "pageId": "page2",
     "name": "Google News – Fintech & UPI India",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=fintech+UPI+Zerodha+Groww+PhonePe+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=fintech+UPI+Zerodha+Groww+PhonePe+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Fintech & UPI",
     "language": "english",
     "active": true
@@ -544,7 +544,7 @@
     "pageId": "page2",
     "name": "Google News – Real Estate India",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=real+estate+property+price+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=real+estate+property+price+India+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Real Estate",
     "language": "english",
     "active": true
@@ -554,7 +554,7 @@
     "pageId": "page2",
     "name": "Google News – Startup Funding",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=India+startup+funding+investment+unicorn+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=India+startup+funding+investment+unicorn+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Startup & Investment",
     "language": "english",
     "active": true
@@ -564,7 +564,7 @@
     "pageId": "page2",
     "name": "Google News – Crude Oil & Energy",
     "type": "rss",
-    "url": "https://news.google.com/rss/search?q=crude+oil+price+today+India+energy+sector+2026&hl=en-IN&gl=IN&ceid=IN:en",
+    "url": "https://news.google.com/rss/search?q=crude+oil+price+today+India+energy+sector+2025&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Commodities",
     "language": "english",
     "active": true
