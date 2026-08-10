@@ -515,10 +515,24 @@
 
     <!-- Image Prompt Section -->
     <div style="margin-bottom: 20px; background: #f8fafc; padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
-      <label class="form-label" style="font-size: 12px; font-weight: 800; color: #0284c7; margin-bottom: 6px; display: block;">
-        🖼️ Image Custom Prompt Engineering
-      </label>
-      <textarea id="promptDialogImage" class="form-input" style="height: 75px; font-size: 13px; line-height: 1.4; resize: vertical; margin-bottom: 10px; font-family: inherit;" placeholder="e.g. Professional 4k studio photography of Indian movie premiere, realistic lighting, detailed..."></textarea>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <label class="form-label" style="font-size: 12px; font-weight: 800; color: #0284c7; margin: 0;">
+          🖼️ Image Custom Prompt Engineering
+        </label>
+      </div>
+
+      <!-- Quick Cartoon Presets -->
+      <div style="margin-bottom: 8px;">
+        <span style="font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; display: block; margin-bottom: 4px;">🎨 Vibrant Cartoon Prompts:</span>
+        <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10.5px; padding: 3px 8px;" onclick="applyPromptPreset('cartoon_general')">🎨 General</button>
+          <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10.5px; padding: 3px 8px;" onclick="applyPromptPreset('cartoon_movie')">🎬 Movies/OTT</button>
+          <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10.5px; padding: 3px 8px;" onclick="applyPromptPreset('cartoon_stock')">📈 Stock/Trading</button>
+          <button type="button" class="btn btn-secondary btn-sm" style="font-size: 10.5px; padding: 3px 8px;" onclick="applyPromptPreset('cartoon_news')">📰 News/WB</button>
+        </div>
+      </div>
+
+      <textarea id="promptDialogImage" class="form-input" style="height: 75px; font-size: 13px; line-height: 1.4; resize: vertical; margin-bottom: 10px; font-family: inherit;" placeholder="e.g. Vibrant colorful 2D cartoon illustration, bold thick outlines, flat saturated colors..."></textarea>
       <button type="button" class="btn btn-secondary btn-sm" id="btnDialogGenImage" onclick="generateImageFromPromptDialog()" style="width: 100%; padding: 10px; font-size: 13px; border-radius: 10px;">
         🖼️ Generate Image
       </button>

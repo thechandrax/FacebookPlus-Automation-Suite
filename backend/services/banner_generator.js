@@ -100,7 +100,8 @@ async function generatePostBanner(title, category = 'WEST BENGAL NEWS', dateStr 
     const height = 1350;
     let photoBuffer = null;
 
-    const promptToUse = customAiPrompt || `Kolkata West Bengal news photograph, ${cleanTextForPrompt(title, 'Kolkata news report')}, professional journalism 4k photo`;
+    const VIBRANT_CARTOON_SUFFIX = ', Vibrant colorful 2D cartoon illustration, bold thick outlines, flat saturated colors, playful children book art style, bright rainbow palette, high contrast';
+    const promptToUse = customAiPrompt || `Kolkata West Bengal news photograph, ${cleanTextForPrompt(title, 'Kolkata news report')}${VIBRANT_CARTOON_SUFFIX}`;
 
     // 1. TRY HUGGING FACE FREE FLUX.1 API IF PROMPT OR MODE IS AI_IMAGE
     if ((customAiPrompt || mode === 'ai_image') && hfKey && hfKey.startsWith('hf_')) {

@@ -594,6 +594,21 @@ async function handleAiRewriteCaption() {
   }
 }
 
+const VIBRANT_CARTOON_PROMPTS = {
+  cartoon_general: "Vibrant colorful 2D cartoon illustration, bold thick outlines, flat saturated colors, playful children's book art style, bright rainbow palette, high contrast",
+  cartoon_movie: "Colorful cartoon illustration of a movie theater, popcorn and film reel, bold outlines, flat bright colors, festive Bollywood poster style, rainbow color palette",
+  cartoon_stock: "Colorful flat cartoon illustration of stock market growth, bold outlines, bright green and gold chart, playful business icons, vibrant saturated colors",
+  cartoon_news: "Colorful cartoon illustration of Kolkata cityscape, Howrah Bridge, bold outlines, flat bright colors, cheerful poster art style, vibrant palette"
+};
+
+function applyPromptPreset(key) {
+  const promptText = VIBRANT_CARTOON_PROMPTS[key];
+  if (promptText) {
+    document.getElementById('promptDialogImage').value = promptText;
+    showToast('🎨 Applied Vibrant Cartoon Preset!');
+  }
+}
+
 function openPromptDialog() {
   const modal = document.getElementById('promptDialogModal');
   if (modal) modal.style.display = 'flex';
