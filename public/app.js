@@ -168,10 +168,6 @@ async function loadPosts() {
 //  STATS & FILTERS
 // ═══════════════════════════════════════════════════════
 function renderStats() {
-  const cats = {};
-  allPosts.forEach(p => { if (p.status !== 'rejected') cats[p.category] = (cats[p.category] || 0) + 1; });
-  const topCats = Object.entries(cats).sort((a,b) => b[1] - a[1]).slice(0, 4);
-
   const grid  = document.getElementById('statsGrid');
   const total = allPosts.filter(p => p.status !== 'rejected').length;
   const pend  = allPosts.filter(p => p.status === 'pending').length;
@@ -191,15 +187,6 @@ function renderStats() {
       <div class="stat-value" style="color:#34d399">${pub}</div>
     </div>
   `;
-
-  topCats.forEach(([cat, cnt]) => {
-    html += `
-      <div class="stat-card">
-        <div class="stat-label">${catEmoji(cat)} ${escHtml(cat)}</div>
-        <div class="stat-value">${cnt}</div>
-      </div>
-    `;
-  });
 
   if (grid) grid.innerHTML = html;
 }
