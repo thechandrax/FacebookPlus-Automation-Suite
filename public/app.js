@@ -204,6 +204,11 @@ function renderStats() {
   if (grid) grid.innerHTML = html;
 }
 
+function toProperCase(str) {
+  if (!str) return '';
+  return str.split(' ').map(word => word ? word.charAt(0).toUpperCase() + word.slice(1) : '').join(' ');
+}
+
 function renderFilterBar() {
   const cats = ['all', 'pending', 'published', ...new Set(allPosts.filter(p => p.category).map(p => p.category))];
   const bar  = document.getElementById('filterBar');
@@ -213,9 +218,10 @@ function renderFilterBar() {
     const count = c === 'all' ? allPosts.filter(p => p.status !== 'rejected').length
                 : c === 'pending' || c === 'published' ? allPosts.filter(p => p.status === c).length
                 : allPosts.filter(p => p.category === c && p.status !== 'rejected').length;
+    const label = toProperCase(c);
     return `
       <button class="filter-btn ${currentFilter === c ? 'active' : ''}" onclick="setFilter('${escHtml(c)}', this)">
-        <span>${catEmoji(c)} ${escHtml(c)}</span>
+        <span>${catEmoji(c)} ${escHtml(label)}</span>
         <strong style="margin-left:4px;opacity:0.8">${count}</strong>
       </button>
     `;
