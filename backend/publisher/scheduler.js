@@ -89,8 +89,10 @@ async function runAutomationCycle(options = {}) {
   }
 }
 
+let intervalTimer = null;
+
 /**
- * Start cron jobs for ALL active pages using each page's own schedule
+ * Start cron jobs for ALL active pages using each page's own schedule (defaulting to 5 minutes)
  */
 function startCronScheduler(baseUrl = 'http://localhost:3000') {
   stopCronScheduler();
@@ -98,22 +100,35 @@ function startCronScheduler(baseUrl = 'http://localhost:3000') {
 
   pages.forEach(page => {
     if (!page.active) return;
-    const times = page.cronSchedule ? page.cronSchedule.split(',') : ['0 8 * * *'];
+    const times = page.cronSchedule ? page.cronSchedule.split(',') : ['*/5 * * * *'];
     times.forEach(expr => {
       const trimmed = expr.trim();
       if (cron.validate(trimmed)) {
         console.log(`[Scheduler] Registered cron "${trimmed}" for page: ${page.emoji} ${page.name}`);
         const task = cron.schedule(trimmed, () => {
-          console.log(`[Cron Triggered] ${page.emoji} ${page.name} — ${trimmed}`);
+          console.log(`[Cron Triggered 5m] ${page.emoji} ${page.name} — ${trimmed}`);
           runAutomationCycle({ pageId: page.id, baseUrl });
         });
         cronTasks.push(task);
       }
     });
   });
+
+  // Dedicated 5-minute auto-scraper fallback timer (5 mins = 300,000 ms)
+  intervalTimer = setInterval(() => {
+    const activePages = getPages().filter(p => p.active !== false);
+    activePages.forEach(page => {
+      console.log(`[Auto-Scrape 5m Timer] Scraping fresh articles for page: ${page.emoji} ${page.name}...`);
+      runAutomationCycle({ pageId: page.id, baseUrl });
+    });
+  }, 5 * 60 * 1000);
 }
 
 function stopCronScheduler() {
+  if (intervalTimer) {
+    clearInterval(intervalTimer);
+    intervalTimer = null;
+  }
   cronTasks.forEach(t => t.stop());
   cronTasks = [];
 }

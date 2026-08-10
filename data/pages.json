@@ -12,7 +12,7 @@
     "aiStyle": "entertainment",
     "imageType": "ai_image",
     "autoPost": false,
-    "cronSchedule": "0 10 * * *,0 15 * * *,0 20 * * *",
+    "cronSchedule": "*/5 * * * *",
     "active": true
   },
   {
@@ -28,7 +28,7 @@
     "aiStyle": "finance",
     "imageType": "ai_image",
     "autoPost": false,
-    "cronSchedule": "0 9 * * *,0 12 * * *,0 16 * * *",
+    "cronSchedule": "*/5 * * * *",
     "active": true
   },
   {
@@ -44,7 +44,7 @@
     "aiStyle": "news",
     "imageType": "ai_image",
     "autoPost": false,
-    "cronSchedule": "0 8 * * *,0 13 * * *,0 19 * * *",
+    "cronSchedule": "*/5 * * * *",
     "active": true
   }
 ]
