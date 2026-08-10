@@ -931,19 +931,12 @@ a { color: var(--active-primary); text-decoration: none; }
   box-shadow: 0 12px 28px rgba(245, 158, 11, 0.22);
 }
 
-/* Pin Action Button - Hidden by default for unpinned cards, reveals on hover or click/selection */
+/* Pin Action Button - Always visible */
 .source-pin-btn {
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.85);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-}
-.source-card:hover .source-pin-btn,
-.source-card.card-selected .source-pin-btn,
-.source-card.is-pinned .source-pin-btn {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
+  transition: all 0.2s ease;
 }
 .source-title { font-weight: 700; font-size: 14px; color: #0f172a; }
 .source-type-tag {
