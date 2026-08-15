@@ -375,21 +375,18 @@ app.post('/api/settings', (req, res) => {
 // ═══════════════════════════════════════════════════════════
 //  START
 // ═══════════════════════════════════════════════════════════
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`===================================================`);
-    if (!process.env.DASHBOARD_API_KEY) {
-      console.log(`⚠️  DASHBOARD_API_KEY not set — /api routes are UNPROTECTED.`);
-      console.log(`   Set DASHBOARD_API_KEY in .env before exposing this server beyond localhost.`);
-    }
-    console.log(`🟢 WB Multi-Page FB Studio running on port ${PORT}`);
-    console.log(`🌐 Dashboard: http://localhost:${PORT}`);
-    console.log(`🎬 Page 1: Movies & Entertainment`);
-    console.log(`📈 Page 2: Trading & Stock Market`);
-    console.log(`📰 Page 3: General News & Education`);
-    console.log(`===================================================`);
-    startCronScheduler(`http://localhost:${PORT}`);
-  });
-}
-
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`===================================================`);
+  if (!process.env.DASHBOARD_API_KEY) {
+    console.log(`⚠️  DASHBOARD_API_KEY not set — /api routes are UNPROTECTED.`);
+    console.log(`   Set DASHBOARD_API_KEY in .env before exposing this server beyond localhost.`);
+  }
+  console.log(`🟢 WB Multi-Page FB Studio running on port ${PORT}`);
+  console.log(`🌐 Dashboard: http://localhost:${PORT}`);
+  console.log(`🎬 Page 1: Movies & Entertainment`);
+  console.log(`📈 Page 2: Trading & Stock Market`);
+  console.log(`📰 Page 3: General News & Education`);
+  console.log(`===================================================`);
+  const serverUrl = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  startCronScheduler(serverUrl);
+});
