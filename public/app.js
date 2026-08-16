@@ -237,7 +237,8 @@ function handleSearchPosts(val) {
 //  RENDER POSTS GRID
 // ═══════════════════════════════════════════════════════
 function renderPosts() {
-  let filtered = allPosts.filter(p => p.status !== 'rejected');
+  const pagePosts = getCurrentPagePosts();
+  let filtered = pagePosts.filter(p => p.status !== 'rejected');
 
   if (currentFilter === 'pending' || currentFilter === 'published') {
     filtered = filtered.filter(p => p.status === currentFilter);
