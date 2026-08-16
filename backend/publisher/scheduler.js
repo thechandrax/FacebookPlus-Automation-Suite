@@ -18,8 +18,14 @@ async function runAutomationCycle(options = {}) {
     return { status: 'busy', pageId };
   }
 
+  const clr = {
+    reset: "\x1b[0m", bold: "\x1b[1m", cyan: "\x1b[36m", green: "\x1b[32m",
+    yellow: "\x1b[33m", magenta: "\x1b[35m", blue: "\x1b[34m", white: "\x1b[37m", gray: "\x1b[90m"
+  };
+
   isRunning[pageId] = true;
-  console.log(`[Scheduler] Starting automation cycle for page: ${pageId}`);
+  console.log(`${clr.cyan}${clr.bold}════════════════════════════════════════════════════════════════════${clr.reset}`);
+  console.log(`${clr.magenta}${clr.bold}[Scheduler] Starting automation cycle for page: ${pageId}${clr.reset}`);
 
   try {
     const pages = getPages();
@@ -34,7 +40,9 @@ async function runAutomationCycle(options = {}) {
     const createdPosts = [];
 
     for (const item of itemsToProcess) {
-      console.log(`[Scheduler][${pageId}] Processing: "${item.title}"`);
+      console.log(`${clr.gray}────────────────────────────────────────────────────────────────────${clr.reset}`);
+      console.log(`${clr.yellow}${clr.bold}[Scraped Content]${clr.reset} ${clr.cyan}${clr.bold}"${item.title}"${clr.reset}`);
+      console.log(`${clr.gray}  Source : ${clr.white}${item.sourceName || 'RSS Feed'}${clr.reset} | Category : ${clr.magenta}${item.category || 'General'}${clr.reset}`);
 
       // 2. Generate AI caption in the correct style for this page
       const caption = await generateFacebookCaption(item, language, null, null, aiStyle);
@@ -63,7 +71,7 @@ async function runAutomationCycle(options = {}) {
 
       // 5. Auto-publish if enabled for this page
       if (autoPost) {
-        console.log(`[Scheduler][${pageId}] Auto-publishing post ${post.id}...`);
+        console.log(`${clr.blue}[Scheduler][${pageId}] Auto-publishing post ${post.id}...${clr.reset}`);
         const pubResult = await publishToFacebook(post, { baseUrl: options.baseUrl || 'http://localhost:3000' });
         if (pubResult.success) {
           updatePost(post.id, {
@@ -77,9 +85,12 @@ async function runAutomationCycle(options = {}) {
         }
       }
       createdPosts.push(post);
+      console.log(`${clr.green}${clr.bold}✔ Saved Scraped Post #${post.id}${clr.reset}`);
+      console.log(`${clr.gray}────────────────────────────────────────────────────────────────────${clr.reset}`);
     }
 
-    console.log(`[Scheduler][${pageId}] Cycle complete — ${createdPosts.length} posts created.`);
+    console.log(`${clr.green}${clr.bold}[Scheduler][${pageId}] Cycle complete — ${createdPosts.length} posts created.${clr.reset}`);
+    console.log(`${clr.cyan}${clr.bold}════════════════════════════════════════════════════════════════════${clr.reset}`);
     isRunning[pageId] = false;
     return { status: 'success', pageId, count: createdPosts.length, posts: createdPosts };
   } catch (err) {
