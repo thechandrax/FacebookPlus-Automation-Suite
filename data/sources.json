@@ -271,6 +271,36 @@
     "active": true
   },
   {
+    "id": "scanx-dhan-market-news",
+    "pageId": "page2",
+    "name": "ScanX by Dhan (Market News)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=ScanX+Dhan+stock+market+India+NSE+BSE+Nifty+trading&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "askfuzz-fuzz-market-news",
+    "pageId": "page2",
+    "name": "AskFuzz / Fuzz (AI Market News)",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Indian+stock+market+NSE+BSE+Sensex+Nifty+share+price+today+trading&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Stock Market",
+    "language": "english",
+    "active": true
+  },
+  {
+    "id": "zerodha-varsity-news",
+    "pageId": "page2",
+    "name": "Zerodha & Trading Apps News",
+    "type": "rss",
+    "url": "https://news.google.com/rss/search?q=Zerodha+Groww+Angel+One+Upstox+India+trading+stock+market&hl=en-IN&gl=IN&ceid=IN:en",
+    "category": "Fintech & UPI",
+    "language": "english",
+    "active": true
+  },
+  {
     "id": "gnews-movie-release-today",
     "pageId": "page1",
     "name": "Daily Movie Releases (India)",
