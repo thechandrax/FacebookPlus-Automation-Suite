@@ -548,31 +548,6 @@ async function handleRegenerateAiPhoto() {
   }
 }
 
-async function handleGenerateSeriesGraphChart() {
-  if (currentEnhPhotos.length >= 5) {
-    showToast('⚠️ Max 5 photos limit reached!');
-    return;
-  }
-  const postId = document.getElementById('enhPostId').value;
-  const post = allPosts.find(p => p.id === postId);
-  if (!post) return;
-
-  showToast('📊 Generating SeriesGraph Rating Matrix Chart...');
-
-  try {
-    const res = await fetch(`/api/posts/${postId}/generate-seriesgraph`, { method: 'POST' });
-    const data = await res.json();
-    if (data.success && data.post && data.post.bannerUrl) {
-      currentEnhPhotos.push(data.post.bannerUrl);
-      renderEnhPhotosGallery();
-      showToast(`📊 SeriesGraph Rating Chart generated & attached! (${currentEnhPhotos.length}/5)`);
-      loadPosts();
-    }
-  } catch (e) {
-    showToast('❌ SeriesGraph chart generation failed.');
-  }
-}
-
 async function handleAiRewriteCaption() {
   const postId = document.getElementById('enhPostId').value;
   const btn    = document.getElementById('btnRewriteCaption');

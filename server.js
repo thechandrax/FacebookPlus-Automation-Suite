@@ -21,7 +21,6 @@ const { publishToFacebook }   = require('./backend/publisher/fb_publisher');
 const { generatePostBanner }  = require('./backend/services/banner_generator');
 const { generatePostCaption } = require('./backend/services/ai_generator');
 const { fetchRssFeed, fetchOgImageAndSummary } = require('./backend/scrapers/rss_scraper');
-const { generateSeriesGraphChart } = require('./backend/services/seriesgraph_generator');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -233,27 +232,6 @@ app.post('/api/posts/:id/custom-generate', async (req, res) => {
       bannerUrl = await generatePostBanner(post.title, post.category || 'NEWS', dateStr, 'ai_image', post.imageUrl, post.link, customImagePrompt);
     }
     const updated = updatePost(post.id, { generatedCaption: newCaption || post.generatedCaption, bannerUrl: bannerUrl || post.bannerUrl, copyrightSafe: true });
-    res.json({ success: true, post: updated });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-// POST generate SeriesGraph Rating Chart for a post
-app.post('/api/posts/:id/generate-seriesgraph', async (req, res) => {
-  const posts = getPosts();
-  const post = posts.find(p => p.id === req.params.id);
-  if (!post) return res.status(404).json({ success: false, error: 'Post not found' });
-  try {
-    const posterUrl = post.imageUrl || post.bannerUrl || 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop';
-    const chartUrl = await generateSeriesGraphChart({
-      title: post.title,
-      rating: '8.4',
-      votes: '520,100',
-      years: '2024 - 2026',
-      posterUrl: posterUrl
-    });
-    const updated = updatePost(post.id, { bannerUrl: chartUrl });
     res.json({ success: true, post: updated });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
