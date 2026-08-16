@@ -27,6 +27,9 @@ Welcome to the comprehensive technical and operational documentation for **Faceb
 7. [**07. Mobile Responsive Design & Touch UX**](./07_MOBILE_RESPONSIVE_DESIGN.md)
    - Smartphone & Tablet Adaptations, Vertical Studio Stacking, Touch Target Ergonomics.
 
+8. [**08. Folder Structure & Codebase Map**](./08_FOLDER_STRUCTURE_AND_CODEBASE_MAP.md)
+   - ASCII Directory Tree, File Breakdown, Component Roles, Runtime Responsibilities.
+
 ---
 
 *Generated for [FacebookPlus-Automation-Suite](https://github.com/thechandrax/FacebookPlus-Automation-Suite)*
