@@ -362,20 +362,24 @@ app.post('/api/settings', (req, res) => {
 });
 
 // ═══════════════════════════════════════════════════════════
-//  START
-// ═══════════════════════════════════════════════════════════
+const c = {
+  reset: "\x1b[0m", bold: "\x1b[1m", cyan: "\x1b[36m", green: "\x1b[32m",
+  yellow: "\x1b[33m", magenta: "\x1b[35m", blue: "\x1b[34m", white: "\x1b[37m", gray: "\x1b[90m"
+};
+
 app.listen(PORT, () => {
-  console.log(`===================================================`);
+  console.log(`${c.cyan}${c.bold}╔════════════════════════════════════════════════════════════════════╗${c.reset}`);
+  console.log(`${c.cyan}${c.bold}║          ⚡ FACEBOOK+ AUTOMATION STUDIO — RUNNING LIVE             ║${c.reset}`);
+  console.log(`${c.cyan}${c.bold}╚════════════════════════════════════════════════════════════════════╝${c.reset}`);
   if (!process.env.DASHBOARD_API_KEY) {
-    console.log(`⚠️  DASHBOARD_API_KEY not set — /api routes are UNPROTECTED.`);
-    console.log(`   Set DASHBOARD_API_KEY in .env before exposing this server beyond localhost.`);
+    console.log(`${c.yellow}⚠️  DASHBOARD_API_KEY not set — /api routes are open locally.${c.reset}`);
   }
-  console.log(`🟢 WB Multi-Page FB Studio running on port ${PORT}`);
-  console.log(`🌐 Dashboard: http://localhost:${PORT}`);
-  console.log(`🎬 Page 1: Movies & Entertainment`);
-  console.log(`📈 Page 2: Trading & Stock Market`);
-  console.log(`📰 Page 3: General News & Education`);
-  console.log(`===================================================`);
+  console.log(`${c.green}${c.bold}🟢 WB Multi-Page FB Studio active on port ${PORT}${c.reset}`);
+  console.log(`${c.cyan}${c.bold}🌐 Dashboard URL : ${c.white}${c.bold}http://localhost:${PORT}${c.reset}`);
+  console.log(`${c.magenta}🎬 Page 1 : Movies & Entertainment${c.reset}`);
+  console.log(`${c.blue}📈 Page 2 : Trading & Stock Market${c.reset}`);
+  console.log(`${c.yellow}📰 Page 3 : General News & Education${c.reset}`);
+  console.log(`${c.gray}────────────────────────────────────────────────────────────────────${c.reset}`);
   const serverUrl = process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : `http://localhost:${PORT}`;
   startCronScheduler(serverUrl);
 });

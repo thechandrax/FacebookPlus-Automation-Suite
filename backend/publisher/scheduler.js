@@ -104,9 +104,9 @@ function startCronScheduler(baseUrl = 'http://localhost:3000') {
     times.forEach(expr => {
       const trimmed = expr.trim();
       if (cron.validate(trimmed)) {
-        console.log(`[Scheduler] Registered cron "${trimmed}" for page: ${page.emoji} ${page.name}`);
+        console.log(`\x1b[33m[Scheduler]\x1b[0m Registered cron "\x1b[36m${trimmed}\x1b[0m" for page: ${page.emoji} \x1b[1m${page.name}\x1b[0m`);
         const task = cron.schedule(trimmed, () => {
-          console.log(`[Cron Triggered 5m] ${page.emoji} ${page.name} — ${trimmed}`);
+          console.log(`\x1b[32m[Cron Triggered 5m]\x1b[0m ${page.emoji} \x1b[1m${page.name}\x1b[0m — ${trimmed}`);
           runAutomationCycle({ pageId: page.id, baseUrl });
         });
         cronTasks.push(task);
@@ -118,7 +118,7 @@ function startCronScheduler(baseUrl = 'http://localhost:3000') {
   intervalTimer = setInterval(() => {
     const activePages = getPages().filter(p => p.active !== false);
     activePages.forEach(page => {
-      console.log(`[Auto-Scrape 5m Timer] Scraping fresh articles for page: ${page.emoji} ${page.name}...`);
+      console.log(`\x1b[36m[Auto-Scrape 5m Timer]\x1b[0m Scraping fresh articles for page: ${page.emoji} \x1b[1m${page.name}\x1b[0m...`);
       runAutomationCycle({ pageId: page.id, baseUrl });
     });
   }, 5 * 60 * 1000);
