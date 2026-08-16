@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 
 /**
  * Scrapes daily new OTT releases & movie poster images from JustWatch India
+ * Groups releases into Day-Wise 5-Image Bundle Posts (All 5 Poster Images & 5 Titles in 1 Post Container)
  * URL: https://www.justwatch.com/in/new
  */
 async function fetchJustWatchReleases() {
@@ -18,7 +19,7 @@ async function fetchJustWatchReleases() {
     });
 
     const $ = cheerio.load(res.data);
-    const items = [];
+    const rawReleases = [];
     const seen = new Set();
 
     $('a[href*="/in/movie/"], a[href*="/in/tv-show/"]').each((i, el) => {
@@ -47,20 +48,43 @@ async function fetchJustWatchReleases() {
           fullImg = img.replace('/s100/', '/s592/');
         }
 
-        items.push({
-          title: `${title} - New OTT Release`,
-          link: fullLink,
-          sourceName: 'JustWatch India (New OTT Releases)',
-          category: 'OTT Release',
-          snippet: `🔥 New OTT Release on JustWatch India: "${title}". Check streaming platform availability, cast details, ratings, and watch online now!`,
-          imageUrl: fullImg,
-          pubDate: new Date().toISOString()
-        });
+        rawReleases.push({ title, link: fullLink, img: fullImg });
       }
     });
 
-    console.log(`[JustWatch Scraper] Successfully scraped ${items.length} new OTT releases with HD poster images!`);
-    return items;
+    console.log(`[JustWatch Scraper] Found ${rawReleases.length} raw releases for today.`);
+
+    if (rawReleases.length === 0) return [];
+
+    const todayDate = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    const bundlePosts = [];
+
+    // Group releases into bundles of 5 releases per post (5 images attached per post container)
+    const chunkSize = 5;
+    for (let i = 0; i < rawReleases.length && i < 25; i += chunkSize) {
+      const chunk = rawReleases.slice(i, i + chunkSize);
+      const bundleNum = Math.floor(i / chunkSize) + 1;
+
+      const titleListStr = chunk.map((c, idx) => `  ${idx + 1}. ${c.title}`).join('\n');
+      const photosList = chunk.map(c => c.img).filter(Boolean);
+
+      const masterTitle = `🎬 Today's Top ${chunk.length} New OTT Releases in India (${todayDate}) #${bundleNum}`;
+      const masterSnippet = `🔥 Day-Wise OTT Release Roundup (${todayDate}):\n${titleListStr}\n\nCheck streaming platform availability, ratings, and watch online now on JustWatch India!`;
+
+      bundlePosts.push({
+        title: masterTitle,
+        link: chunk[0].link || 'https://www.justwatch.com/in/new',
+        sourceName: 'JustWatch India (New OTT Releases)',
+        category: 'OTT Release',
+        snippet: masterSnippet,
+        imageUrl: photosList[0] || '',
+        photos: photosList,
+        pubDate: new Date().toISOString()
+      });
+    }
+
+    console.log(`[JustWatch Scraper] Created ${bundlePosts.length} day-wise bundle posts (each containing 5 release titles & 5 attached poster images)!`);
+    return bundlePosts;
   } catch (err) {
     console.error(`[JustWatch Scraper Error] ${err.message}`);
     return [];

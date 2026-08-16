@@ -64,6 +64,7 @@ async function runAutomationCycle(options = {}) {
         category: item.category,
         snippet: item.snippet,
         imageUrl: item.imageUrl,
+        photos: item.photos && item.photos.length ? item.photos : (bannerUrl ? [bannerUrl] : (item.imageUrl ? [item.imageUrl] : [])),
         generatedCaption: caption,
         bannerUrl,
         status: autoPost ? 'approved' : 'pending'
