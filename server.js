@@ -387,6 +387,6 @@ app.listen(PORT, () => {
   console.log(`📈 Page 2: Trading & Stock Market`);
   console.log(`📰 Page 3: General News & Education`);
   console.log(`===================================================`);
-  const serverUrl = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  const serverUrl = process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : `http://localhost:${PORT}`;
   startCronScheduler(serverUrl);
 });
