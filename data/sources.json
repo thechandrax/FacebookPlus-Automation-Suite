@@ -127,7 +127,7 @@
     "url": "https://www.bollywoodhungama.com/rss/news.xml",
     "category": "Movies & Entertainment",
     "language": "hindi_english_mixed",
-    "active": true
+    "active": false
   },
   {
     "id": "filmibeat",
@@ -137,7 +137,7 @@
     "url": "https://www.filmibeat.com/rss.xml",
     "category": "Movies & Entertainment",
     "language": "hindi_english_mixed",
-    "active": true
+    "active": false
   },
   {
     "id": "toi-entertainment",
@@ -147,7 +147,7 @@
     "url": "https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms",
     "category": "Movies & Entertainment",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "pinkvilla",
@@ -157,7 +157,7 @@
     "url": "https://www.pinkvilla.com/feed",
     "category": "Celebrity & Gossip",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "google-tollywood",
@@ -167,7 +167,7 @@
     "url": "https://news.google.com/rss/search?q=Tollywood+Bengali+movie+release&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Bengali Cinema",
     "language": "english",
-    "active": true,
+    "active": false,
     "pinned": true
   },
   {
@@ -178,7 +178,7 @@
     "url": "https://news.google.com/rss/search?q=Bollywood+new+movie+box+office&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Movies & Entertainment",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "google-ott",
@@ -198,7 +198,7 @@
     "url": "https://news.google.com/rss/search?q=Bengali+cinema+Kolkata+film+2026&hl=bn&gl=IN&ceid=IN:bn",
     "category": "Bengali Cinema",
     "language": "bengali",
-    "active": true
+    "active": false
   },
   {
     "id": "moneycontrol-markets",
@@ -278,7 +278,7 @@
     "url": "https://news.google.com/rss/search?q=new+movie+release+today+India+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Daily Movie Release",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-bollywood-release",
@@ -288,7 +288,7 @@
     "url": "https://news.google.com/rss/search?q=Bollywood+movie+release+this+week+box+office+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Daily Movie Release",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-tollywood-release",
@@ -298,7 +298,7 @@
     "url": "https://news.google.com/rss/search?q=Bengali+Tollywood+new+movie+release+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Bengali Cinema Release",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-hindi-film-release",
@@ -308,7 +308,7 @@
     "url": "https://news.google.com/rss/search?q=Hindi+film+release+date+trailer+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Bollywood Release",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-south-film-release",
@@ -318,7 +318,7 @@
     "url": "https://news.google.com/rss/search?q=South+Indian+Hindi+dubbed+movie+release+today+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "South Indian Release",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-netflix-india",
@@ -398,7 +398,7 @@
     "url": "https://news.google.com/rss/search?q=box+office+collection+today+India+crore&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Box Office",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "gnews-movie-review",
@@ -408,7 +408,7 @@
     "url": "https://news.google.com/rss/search?q=movie+review+rating+India+release+2026&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Movie Reviews",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "cnbctv18-market",
@@ -638,7 +638,7 @@
     "url": "https://news.google.com/rss/search?q=web+series+episode+rating+chart+graph&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Series Ratings & Graphs",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "imdb-top-ott-ratings",
@@ -658,7 +658,7 @@
     "url": "https://news.google.com/rss/search?q=OTT+release+this+week+ratings+reviews&hl=en-IN&gl=IN&ceid=IN:en",
     "category": "Ratings & Reviews",
     "language": "english",
-    "active": true
+    "active": false
   },
   {
     "id": "rotten-tomatoes-ott",
