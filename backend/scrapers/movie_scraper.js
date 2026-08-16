@@ -22,20 +22,19 @@ async function fetchMovieNews() {
   const existingLinks  = new Set(existingPosts.map(p => p.link));
   const existingTitles = new Set(existingPosts.map(p => (p.title || '').toLowerCase().trim()));
 
-  // 1. General RSS sources (configured in sources.json)
-  let allItems = [];
-  for (const source of sources) {
-    const items = await fetchRssFeed(source);
-    allItems.push(...items);
-  }
+  // 1. JustWatch India daily new OTT releases & posters (TOP PRIORITY!)
+  const justWatchItems = await fetchJustWatchReleases();
+  let allItems = [...justWatchItems];
 
   // 2. Daily movie & OTT release feeds (dedicated scraper)
   const releaseItems = await fetchDailyReleases();
   allItems.push(...releaseItems);
 
-  // 3. JustWatch India daily new OTT releases & posters
-  const justWatchItems = await fetchJustWatchReleases();
-  allItems.push(...justWatchItems);
+  // 3. General RSS sources (configured in sources.json)
+  for (const source of sources) {
+    const items = await fetchRssFeed(source);
+    allItems.push(...items);
+  }
 
   // Deduplicate across both sources
   const newItems = [];

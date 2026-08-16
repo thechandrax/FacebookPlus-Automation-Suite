@@ -51,7 +51,7 @@ async function fetchJustWatchReleases() {
           title: `${title} - New OTT Release`,
           link: fullLink,
           sourceName: 'JustWatch India (New OTT Releases)',
-          category: 'OTT Releases',
+          category: 'OTT Release',
           snippet: `🔥 New OTT Release on JustWatch India: "${title}". Check streaming platform availability, cast details, ratings, and watch online now!`,
           imageUrl: fullImg,
           pubDate: new Date().toISOString()
