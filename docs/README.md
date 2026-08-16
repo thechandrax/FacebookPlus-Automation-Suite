@@ -24,6 +24,9 @@ Welcome to the comprehensive technical and operational documentation for **Faceb
 6. [**06. Railway 24/7 Cloud Deployment Guide**](./06_RAILWAY_247_DEPLOYMENT_GUIDE.md)
    - Step-by-Step Railway Setup, Environment Variables, Auto-Restart & Troubleshooting.
 
+7. [**07. Mobile Responsive Design & Touch UX**](./07_MOBILE_RESPONSIVE_DESIGN.md)
+   - Smartphone & Tablet Adaptations, Vertical Studio Stacking, Touch Target Ergonomics.
+
 ---
 
 *Generated for [FacebookPlus-Automation-Suite](https://github.com/thechandrax/FacebookPlus-Automation-Suite)*
