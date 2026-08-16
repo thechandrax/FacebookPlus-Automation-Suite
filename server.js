@@ -1,3 +1,14 @@
+if (typeof globalThis.File === 'undefined') {
+  const { Blob } = require('buffer');
+  class File extends Blob {
+    constructor(fileBits, fileName, options = {}) {
+      super(fileBits, options);
+      this.name = fileName;
+      this.lastModified = options.lastModified || Date.now();
+    }
+  }
+  globalThis.File = File;
+}
 require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const cors    = require('cors');

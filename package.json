@@ -10,6 +10,9 @@
     "test-ai": "node scripts/test_ai.js",
     "test-banner": "node scripts/test_banner.js"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "keywords": [
     "facebook-automation",
     "west-bengal",
