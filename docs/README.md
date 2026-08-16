@@ -30,6 +30,9 @@ Welcome to the comprehensive technical and operational documentation for **Faceb
 8. [**08. Folder Structure & Codebase Map**](./08_FOLDER_STRUCTURE_AND_CODEBASE_MAP.md)
    - ASCII Directory Tree, File Breakdown, Component Roles, Runtime Responsibilities.
 
+9. [**09. 7-Day Rolling Data Retention & Auto-Cleanup**](./09_DATA_RETENTION_7DAY_CLEANUP.md)
+   - Rolling 7-Day Storage Manager, Automated Post/Banner/PDF Purging, Zero Leak Policy.
+
 ---
 
 *Generated for [FacebookPlus-Automation-Suite](https://github.com/thechandrax/FacebookPlus-Automation-Suite)*

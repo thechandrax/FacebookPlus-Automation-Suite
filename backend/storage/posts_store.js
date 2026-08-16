@@ -156,8 +156,85 @@ function saveSources(sources) {
   fs.writeFileSync(SOURCES_FILE, JSON.stringify(sources, null, 2));
 }
 
+/**
+ * 7-Day Rolling Data & File Cleanup Manager
+ * Keeps data, generated banners, and PDF files for ONLY the last N days (default: 7 days)
+ */
+function pruneOldData(maxDays = 7) {
+  ensureDataDir();
+  const maxAgeMs = maxDays * 24 * 60 * 60 * 1000;
+  const now = Date.now();
+  const cutoffTime = now - maxAgeMs;
+
+  let allPosts = [];
+  try { allPosts = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8')); }
+  catch (e) { return { prunedPosts: 0, prunedFiles: 0 }; }
+
+  const activePosts = [];
+  const expiredPosts = [];
+
+  allPosts.forEach(post => {
+    const postTime = new Date(post.createdAt || post.scrapedAt || post.updatedAt || 0).getTime();
+    if (postTime > 0 && postTime < cutoffTime) {
+      expiredPosts.push(post);
+    } else {
+      activePosts.push(post);
+    }
+  });
+
+  let prunedFiles = 0;
+
+  // Delete local generated banner images & attached photos belonging to expired posts
+  expiredPosts.forEach(post => {
+    const photosToDelete = [];
+    if (post.bannerUrl && post.bannerUrl.startsWith('/generated_banners/')) {
+      photosToDelete.push(post.bannerUrl);
+    }
+    if (Array.isArray(post.attachedPhotos)) {
+      post.attachedPhotos.forEach(url => {
+        if (url && url.startsWith('/generated_banners/')) photosToDelete.push(url);
+      });
+    }
+    photosToDelete.forEach(relPath => {
+      const absPath = path.join(__dirname, '../../public', relPath);
+      if (fs.existsSync(absPath)) {
+        try { fs.unlinkSync(absPath); prunedFiles++; } catch (e) {}
+      }
+    });
+  });
+
+  // Clean orphan files in generated_banners & pdf_downloads older than maxDays
+  const foldersToClean = [
+    path.join(__dirname, '../../public/generated_banners'),
+    path.join(__dirname, '../../public/pdf_downloads')
+  ];
+
+  foldersToClean.forEach(dirPath => {
+    if (fs.existsSync(dirPath)) {
+      const files = fs.readdirSync(dirPath);
+      files.forEach(fileName => {
+        const filePath = path.join(dirPath, fileName);
+        try {
+          const stats = fs.statSync(filePath);
+          if (stats.mtimeMs < cutoffTime) {
+            fs.unlinkSync(filePath);
+            prunedFiles++;
+          }
+        } catch (e) {}
+      });
+    }
+  });
+
+  if (expiredPosts.length > 0) {
+    savePosts(activePosts);
+    console.log(`\x1b[35m[7-Day Auto-Cleanup]\x1b[0m Removed ${expiredPosts.length} posts & ${prunedFiles} files older than ${maxDays} days.`);
+  }
+
+  return { prunedPosts: expiredPosts.length, prunedFiles };
+}
+
 module.exports = {
   getPages, savePages, updatePage,
   getPosts, savePosts, addPost, updatePost,
-  getSources, saveSources
+  getSources, saveSources, pruneOldData
 };

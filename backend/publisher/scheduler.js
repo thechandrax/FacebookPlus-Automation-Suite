@@ -3,7 +3,7 @@ const { collectNewsForPage } = require('../scrapers/aggregator');
 const { generateFacebookCaption } = require('../services/ai_generator');
 const { generatePostBanner } = require('../services/banner_generator');
 const { publishToFacebook } = require('./fb_publisher');
-const { addPost, updatePost, getPages } = require('../storage/posts_store');
+const { addPost, updatePost, getPages, pruneOldData } = require('../storage/posts_store');
 
 let isRunning = {};   // { page1: false, page2: false, page3: false }
 let cronTasks = [];
@@ -96,6 +96,8 @@ let intervalTimer = null;
  */
 function startCronScheduler(baseUrl = 'http://localhost:3000') {
   stopCronScheduler();
+  // Perform 7-day rolling data & file cleanup on startup
+  pruneOldData(7);
   const pages = getPages();
 
   pages.forEach(page => {
@@ -116,6 +118,7 @@ function startCronScheduler(baseUrl = 'http://localhost:3000') {
 
   // Dedicated 5-minute auto-scraper fallback timer (5 mins = 300,000 ms)
   intervalTimer = setInterval(() => {
+    pruneOldData(7);
     const activePages = getPages().filter(p => p.active !== false);
     activePages.forEach(page => {
       console.log(`\x1b[36m[Auto-Scrape 5m Timer]\x1b[0m Scraping fresh articles for page: ${page.emoji} \x1b[1m${page.name}\x1b[0m...`);
