@@ -184,11 +184,11 @@ function renderStats() {
       <div class="stat-value">${total}</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">⏳ PENDING</div>
+      <div class="stat-label">PENDING</div>
       <div class="stat-value" style="color:#fbbf24">${pend}</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">✅ PUBLISHED</div>
+      <div class="stat-label">PUBLISHED</div>
       <div class="stat-value" style="color:#34d399">${pub}</div>
     </div>
   `;
