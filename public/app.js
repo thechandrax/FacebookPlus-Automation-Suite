@@ -114,6 +114,10 @@ function updateSidebarInfo() {
   if (text) text.textContent = anyAutoPost ? 'Direct Auto-Publish Active' : 'Manual Review Studio';
 }
 
+function getCurrentPagePosts() {
+  return (allPosts || []).filter(p => (p.pageId || 'page3') === currentPageId);
+}
+
 function updateTabCounts() {
   ['page1','page2','page3'].forEach(pid => {
     const el = document.getElementById(`count-${pid}`);
@@ -152,14 +156,14 @@ async function loadPages() {
 
 async function loadPosts() {
   try {
-    const res  = await fetch(`/api/posts?pageId=${currentPageId}`);
+    const res  = await fetch('/api/posts');
     const data = await res.json();
     if (data.success) {
-      allPosts = data.posts;
+      allPosts = data.posts || [];
+      updateTabCounts();
       renderStats();
       renderFilterBar();
       renderPosts();
-      updateTabCounts();
     }
   } catch (e) {}
 }
@@ -169,9 +173,10 @@ async function loadPosts() {
 // ═══════════════════════════════════════════════════════
 function renderStats() {
   const grid  = document.getElementById('statsGrid');
-  const total = allPosts.filter(p => p.status !== 'rejected').length;
-  const pend  = allPosts.filter(p => p.status === 'pending').length;
-  const pub   = allPosts.filter(p => p.status === 'published').length;
+  const pagePosts = getCurrentPagePosts();
+  const total = pagePosts.filter(p => p.status !== 'rejected').length;
+  const pend  = pagePosts.filter(p => p.status === 'pending').length;
+  const pub   = pagePosts.filter(p => p.status === 'published').length;
 
   let html = `
     <div class="stat-card primary-stat">
@@ -197,14 +202,15 @@ function toProperCase(str) {
 }
 
 function renderFilterBar() {
-  const cats = ['all', 'pending', 'published', ...new Set(allPosts.filter(p => p.category).map(p => p.category))];
+  const pagePosts = getCurrentPagePosts();
+  const cats = ['all', 'pending', 'published', ...new Set(pagePosts.filter(p => p.category).map(p => p.category))];
   const bar  = document.getElementById('filterBar');
   if (!bar) return;
 
   bar.innerHTML = cats.map(c => {
-    const count = c === 'all' ? allPosts.filter(p => p.status !== 'rejected').length
-                : c === 'pending' || c === 'published' ? allPosts.filter(p => p.status === c).length
-                : allPosts.filter(p => p.category === c && p.status !== 'rejected').length;
+    const count = c === 'all' ? pagePosts.filter(p => p.status !== 'rejected').length
+                : c === 'pending' || c === 'published' ? pagePosts.filter(p => p.status === c).length
+                : pagePosts.filter(p => p.category === c && p.status !== 'rejected').length;
     const label = toProperCase(c);
     return `
       <button class="filter-btn ${currentFilter === c ? 'active' : ''}" onclick="setFilter('${escHtml(c)}', this)">
