@@ -1,5 +1,6 @@
 const { fetchRssFeed } = require('./rss_scraper');
 const { fetchDailyReleases, categorizeMovieItem } = require('./release_scraper');
+const { fetchJustWatchReleases } = require('./justwatch_scraper');
 const { getSources, getPosts } = require('../storage/posts_store');
 
 /**
@@ -11,10 +12,10 @@ function categorizeEntertainment(title = '', snippet = '') {
 
 /**
  * Fetch all movie & entertainment news for page1
- * Combines: general RSS sources + dedicated daily release feeds
+ * Combines: general RSS sources + dedicated daily release feeds + JustWatch India OTT releases
  */
 async function fetchMovieNews() {
-  console.log('[Movie Scraper] Fetching Movies & Entertainment + Daily Releases...');
+  console.log('[Movie Scraper] Fetching Movies & Entertainment + Daily Releases + JustWatch India...');
 
   const sources = getSources('page1').filter(s => s.active && s.type === 'rss');
   const existingPosts  = getPosts('page1');
@@ -31,6 +32,10 @@ async function fetchMovieNews() {
   // 2. Daily movie & OTT release feeds (dedicated scraper)
   const releaseItems = await fetchDailyReleases();
   allItems.push(...releaseItems);
+
+  // 3. JustWatch India daily new OTT releases & posters
+  const justWatchItems = await fetchJustWatchReleases();
+  allItems.push(...justWatchItems);
 
   // Deduplicate across both sources
   const newItems = [];
