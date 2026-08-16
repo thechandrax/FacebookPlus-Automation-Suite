@@ -573,9 +573,9 @@
   {
     "id": "justwatch-ott-india",
     "pageId": "page1",
-    "name": "JustWatch (India OTT Streaming Releases)",
-    "type": "rss",
-    "url": "https://news.google.com/rss/search?q=JustWatch+India+OTT+streaming&hl=en-IN&gl=IN&ceid=IN:en",
+    "name": "JustWatch India (New OTT Releases)",
+    "type": "web",
+    "url": "https://www.justwatch.com/in/new",
     "category": "OTT Releases",
     "language": "english",
     "active": true

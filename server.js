@@ -305,18 +305,32 @@ app.get('/api/sources/:id/posts', async (req, res) => {
     return false;
   });
 
-  // Live Fallback: If no saved posts for this source, live-fetch directly from RSS URL!
+  // Live Fallback: If no saved posts for this source, live-fetch directly from RSS or Web URL!
   if (!sourcePosts || sourcePosts.length === 0) {
     try {
-      const liveItems = await fetchRssFeed(source);
-      if (liveItems && liveItems.length > 0) {
-        sourcePosts = liveItems.slice(0, 15).map(item => ({
-          title: item.title,
-          link: item.link,
-          scrapedAt: item.pubDate || new Date().toISOString(),
-          imageUrl: item.imageUrl || '',
-          bannerUrl: item.imageUrl || ''
-        }));
+      if (source.id === 'justwatch-ott-india' || (source.url || '').includes('justwatch.com')) {
+        const { fetchJustWatchReleases } = require('./backend/scrapers/justwatch_scraper');
+        const liveItems = await fetchJustWatchReleases();
+        if (liveItems && liveItems.length > 0) {
+          sourcePosts = liveItems.slice(0, 15).map(item => ({
+            title: item.title,
+            link: item.link,
+            scrapedAt: item.pubDate || new Date().toISOString(),
+            imageUrl: item.imageUrl || '',
+            bannerUrl: item.imageUrl || ''
+          }));
+        }
+      } else {
+        const liveItems = await fetchRssFeed(source);
+        if (liveItems && liveItems.length > 0) {
+          sourcePosts = liveItems.slice(0, 15).map(item => ({
+            title: item.title,
+            link: item.link,
+            scrapedAt: item.pubDate || new Date().toISOString(),
+            imageUrl: item.imageUrl || '',
+            bannerUrl: item.imageUrl || ''
+          }));
+        }
       }
     } catch (e) {}
   }
