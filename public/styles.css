@@ -1203,54 +1203,128 @@ input:checked + .toggle-slider:before { transform: translateX(18px); }
   }
 }
 
+.enh-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 /* ═══════════════════════════════════════════════════════
-   COMPREHENSIVE MOBILE VIEW (& TABLET) OPTIMIZATIONS
+   COMPREHENSIVE MOBILE VIEW OPTIMIZATIONS (<= 768px)
+   (Desktop / Laptop view remains 100% untouched)
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* Shell & Header Layout */
-  .header {
+  /* 1. Header & Page Switcher Navigation */
+  .page-switcher {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    padding: 12px 16px;
+    height: auto;
+    padding: 10px 14px;
+    gap: 10px;
   }
-  .header-actions {
+  .page-switcher-brand {
+    justify-content: center;
+  }
+  .page-tabs {
     width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .search-box {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* App Tabs Navigation Bar */
-  .nav-tabs {
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 6px;
+    justify-content: flex-start;
+    padding-bottom: 4px;
     -webkit-overflow-scrolling: touch;
   }
-  .nav-tab {
-    padding: 8px 14px;
+  .page-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 12px;
     font-size: 12px;
   }
 
-  /* Side-by-Side Workshop Modal - Mobile Vertical Stacking */
-  .enh-modal {
-    max-width: 95%;
-    width: 95%;
-    max-height: 90vh;
-    overflow-y: auto;
-    margin: 10px auto;
-  }
-  .enh-split {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
+  /* 2. Main Content Header & Actions Bar */
+  .main-content {
     padding: 14px;
   }
+  .page-header {
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .page-header-left h1 {
+    font-size: 22px;
+  }
+  .header-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+  }
+  .search-box {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+  }
+  .search-box:focus-within {
+    width: 100%;
+  }
+  .btn-scrape {
+    flex-shrink: 0;
+    padding: 0 14px;
+  }
 
-  /* AI Workshop Action Toolbar (Mobile Responsive Wrap) */
+  /* 3. Stat Cards Metric Grid on Mobile */
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .stat-card {
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .stat-label {
+    font-size: 9.5px;
+    letter-spacing: 0;
+    margin-bottom: 2px;
+  }
+  .stat-value {
+    font-size: 18px;
+  }
+
+  /* 4. Category & Status Filter Bar on Mobile */
+  .filter-bar-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: max-content;
+  }
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* 5. AI Workshop Side-by-Side Modal - Mobile Vertical Stack */
+  .enh-modal {
+    max-width: 96% !important;
+    width: 96% !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    padding: 14px !important;
+    margin: 10px auto !important;
+  }
+  .enh-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* 6. AI Workshop Action Toolbar (Mobile Responsive Wrap) */
   .enh-actions-toolbar {
     flex-wrap: wrap !important;
     justify-content: flex-start !important;
@@ -1265,36 +1339,27 @@ input:checked + .toggle-slider:before { transform: translateX(18px); }
     flex: 1 1 100%;
   }
 
-  /* Sources & Page Config Grid */
-  .sources-grid {
-    grid-template-columns: 1fr;
-  }
-  .page-config-cards {
-    grid-template-columns: 1fr;
-  }
-  .posts-grid {
+  /* 7. Grids & Modal Overlay */
+  .sources-grid, .page-config-cards, .posts-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-
-  /* Modals Overlay */
   .modal-overlay {
     padding: 10px;
-    align-items: flex-end;
+    align-items: center;
   }
   .glass-modal {
     max-width: 100%;
-    border-radius: 18px 18px 0 0;
+    border-radius: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  /* Extra Small Touch Target & Spacing Optimization */
   body {
     font-size: 13px;
   }
   .btn {
-    min-height: 44px; /* Touch-friendly target size */
+    min-height: 40px;
   }
   .source-card {
     padding: 14px;
